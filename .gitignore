@@ -1,3 +1,4 @@
 # Specify filepatterns you want git to ignore.
 package-lock.json
 node_modules
+sqlite-autoconf-3280000

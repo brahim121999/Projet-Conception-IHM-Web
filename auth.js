@@ -15,7 +15,7 @@ passport.use(new LocalStrategy(
     function (username, password, cb) {
         // On récupère les information (mot de passe) de l'utilisateur
         // passé en paramètre
-        dbHelper.users.byUsername(username)
+        dbHelper.user.select({email})
             .then(
                 user => {
                     // Utilisateur pas dans la base de données

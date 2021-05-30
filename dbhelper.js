@@ -79,10 +79,9 @@ const put = sql => new Promise(function (resolve, reject) {
 // dbhelper.user.insert, qui ajoute un étudiant
 //dbhelper.user.command, qui récupère les plats d'un étudiant
 module.exports.user = {
-    select: ({email,password}) => get(`
-        select * from Users
+    select: ({email}) => get(`
+        select ID_User,password from Users
             where ID_User = '${email}'
-                and password = '${password}';
             `),
 
     a: Promise.resolve({

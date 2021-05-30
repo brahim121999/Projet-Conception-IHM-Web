@@ -18,19 +18,19 @@ create table if not exists Meals (
 
 create table if not exists Plans (
     ID_Plan integer ,
-    possible_plan integer,
+    ID_Meal integer,
     Name text not null,
     description text not null,
     price real,
-    PRIMARY KEY (ID_Plan, possible_plan)
+    PRIMARY KEY (ID_Plan, ID_Meal)
 );
 
 --
 -- Users
 --
 
-create table Users (
-    ID_user text not null primary key,
+create table if not exists Users (
+    ID_user text not  null primary key,
     password text not null,
     Isstaff integer not null check (Isstaff in (0, 1))
 );
@@ -39,7 +39,7 @@ create table Users (
 -- Orders
 --
 
-create table Orders (
+create table if not exists Orders (
     ID_Order integer not null,
     ID_User text not null,
     ID_Plan integer,
@@ -61,7 +61,7 @@ create table Orders (
 -- QR_codes
 --
 
-create table QR_codes (
+create table if not exists QR_codes (
     ID_QRcode integer autoincrement,
     ID_Order integer,
     FOREIGN KEY(ID_Order) REFERENCES Orders(ID_Order),

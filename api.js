@@ -29,6 +29,116 @@ module.exports = (passport) => {
         );
     });
 
+     // obtenir tous les etudiants
+    app.get('/api/user', function (req, res, next) {
+        dbHelper.user.all().then(
+            user => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(user));
+            },
+            err => {
+                next(err);
+            },
+        );
+    });
+
+
+    /* post
+    app.get('/api/user/createaccount', function (req, res, next) {
+        dbHelper.user.insert().then(
+            users => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(users));
+            },
+            err => {
+                next(err);
+            },
+        );
+    });
+    */
+    app.get('/api/user/command/:email', function (req, res, next) {
+        dbHelper.user.command(req.params.email).then(
+            user => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(user));
+            },
+            err => {
+                next(err);
+            },
+        );
+    });
+
+    /* post 
+    app.get('/api/user/command/:email', function (req, res, next) {
+        dbHelper.user.command(req.params.email).then(
+            user => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(user));
+            },
+            err => {
+                next(err);
+            },
+        );
+    });
+    */
+
+    app.get('/api/order/:id', function (req, res, next) {
+        dbHelper.order.select(req.params.id).then(
+            order => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(order));
+            },
+            err => {
+                next(err);
+            },
+        );
+    });
+
+    /* post order
+    app.post('/api/order', function (req, res, next) {
+        dbHelper.order.select(req.params.id).then(
+            order => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(order));
+            },
+            err => {
+                next(err);
+            },
+        );
+    });
+    */
+
+    app.get('/api/qrc/:id', function (req, res, next) {
+        dbHelper.qrcode.select(req.params.id).then(
+            qrcs => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(qrcs));
+            },
+            err => {
+                next(err);
+            },
+        );
+    });
+
+    app.get('/api/qrc/:id', function (req, res, next) {
+        dbHelper.qrcode.select(req.params.id).then(
+            qrcs => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(qrcs));
+            },
+            err => {
+                next(err);
+            },
+        );
+    });
+
+
+
+
+
+
+
+    /*
     // Exemple de point d'entré (qui ne fait rien d'intressant) de l'api
     // qui nécessite une authentification.
     // C'est le "require('connect-ensure-login').ensureLoggedIn()" qui vérifie
@@ -47,6 +157,7 @@ module.exports = (passport) => {
     // Authentification pour accéder aux parties privées de l'api (on n'en a pas dans cet exemple)
     // et aux templates privés
     // C'est ici qu'on utilise passport pour créer une session utilisateur
+
     app.post('/login', function (req, res, next) {
         if (!req.body.email) {
             return res.send({success: false, message: 'empty username'});
@@ -69,63 +180,9 @@ module.exports = (passport) => {
             });
         })(req, res, next);
     });
-
+    */
     return app;
+
 }
-
-
- // obtenir tous les etudiants
-app.get('/api/user', function (req, res, next) {
-    dbHelper.user.all().then(
-        user => {
-            res.set('Content-type', 'application/json');
-            res.send(JSON.stringify(user));
-        },
-        err => {
-            next(err);
-        },
-    );
-});
-
-// creation du compte pas a jour encore
-/*
-app.get('/api/user/createaccount', function (req, res, next) {
-    dbHelper.user.insert().then(
-        users => {
-            res.set('Content-type', 'application/json');
-            res.send(JSON.stringify(users));
-        },
-        err => {
-            next(err);
-        },
-    );
-});
-*/
-app.get('/api/user/command/:email', function (req, res, next) {
-    dbHelper.user.command(req.params.email).then(
-        user => {
-            res.set('Content-type', 'application/json');
-            res.send(JSON.stringify(user));
-        },
-        err => {
-            next(err);
-        },
-    );
-});
-
-// post 
-app.post('/api/user/command/:email', function (req, res, next) {
-    dbHelper.user.command(req.params.email).then(
-        user => {
-            res.set('Content-type', 'application/json');
-            res.send(JSON.stringify(user));
-        },
-        err => {
-            next(err);
-        },
-    );
-});
-
-
 
 

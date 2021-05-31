@@ -1,26 +1,56 @@
-html, body{
+body{
+    background-image: #fbf9f9;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%; /* largeur obligatoire pour être centré */
     height: 100%;
 }
 
-#login{
-    height: 100%;
-    align-content: center;
-}
-#login .card{
-    height : 22em;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-.container {
-    margin-bottom: 0.5em;
-}
-
-#selection, #albums{
-    height: 20em;
-}
-
-.footer {
-    background-color: #f5f5f5;
+*{
+    color : black;
     text-align: center;
-  }
+}
+#menu_haut{
+    display: inline-block;
+}
+#bouton_quitter{
+    position: relative;
+    left: 5%;
+    width : 100px;
+    height: 100px;
+}
+footer{
+    height: 80px;
+    padding-top : 10px;
+    margin: 10px;
+    position :relative;
+}
+input{
+    border : 2px solid #f48106;
+    border-radius: 5px;
+    margin : 5px;
+    width: 200px;
+}
+
+#pizza{
+    width : 100px;
+    height: 100px;
+}
+
+#univ{
+    position: absolute;
+    bottom : 0;
+    left : 0;
+    height: 50%;
+}
+footer a{
+    position: absolute;
+    bottom : 0;
+    right : 0;
+}
+
+button{
+    width : 10px;
+    height: 15px;
+    border :1px solid black;
+}

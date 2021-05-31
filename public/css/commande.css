@@ -13,9 +13,9 @@ body{
 #menu_haut{
     display: inline-block;
 }
-#bouton_quitter{
+#bouton_quitter{/*le coller a gauche*/
     position: relative;
-    left: 5%;
+    left: 0px;
     width : 100px;
     height: 100px;
 }

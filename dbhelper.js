@@ -113,7 +113,7 @@ module.exports.order = {
         INSERT INTO Orders 
             VALUES(${ID_order},'${user}',${plan},${meal},${price},'${creation_time}','${collecting_time}',${status})
             `),
-    : () => all('select * from Users'),
+    all: () => all('select * from Users'),
     select : ({ID_order})=> all(`
         select * from Orders where ID_Order = ${ID_order}
             `)

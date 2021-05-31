@@ -2,3 +2,6 @@
 package-lock.json
 node_modules
 sqlite-autoconf-3280000
+sqldiff
+sqlite3
+sqlite3_analyzer

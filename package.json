@@ -10,7 +10,7 @@
     "sqlite3": "^5.0.2"
   },
   "scripts": {
-    "createDB": "sqlite3 PolyMusic.db < createDB.sql",
+    "createDB": "sqlite3 PolyMusic.db < createDB2.sql",
     "start": "nodemon server.js"
   },
   "devDependencies": {

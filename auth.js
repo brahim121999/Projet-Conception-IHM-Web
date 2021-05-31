@@ -18,6 +18,7 @@ passport.use(new LocalStrategy(
         dbHelper.user.select({username})
             .then(
                 user => {
+                    console.debug('test ', user);
                     // Utilisateur pas dans la base de données
                     if (!user) {
                         cb(null, false);

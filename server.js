@@ -17,7 +17,7 @@ const passport = auth(app);
 app.use('/api', api(passport));
 
 // Le contenu statique public sera lu à partir du repertoire 'public'
-app.use('/public', express.static('public'));
+app.use('/', express.static('public'));
 
 // Le contenu statique privé sera lu à partir du repertoire 'private'
 // dans cet exemple, il s'agit principalement des templates de la partie admin
@@ -26,11 +26,17 @@ app.use('/private',
     require('connect-ensure-login').ensureLoggedIn(),
     express.static('private')
 );
+app.post('/login',
+    passport.authenticate('local', { failureRedirect: '/index.html' }),
+    function (req, res) {
+        res.redirect('/private/app.html');
+    }
+);
 
 // Pour toutes les autres url (catch all) on renverra l'index.html
 // c'est le routeur coté client qui fera alors le routing
 app.use(function (req, res) {
-    res.sendFile('public/page_dacceuil.html', {'root': __dirname});
+    res.sendFile('public/index.html', { 'root': __dirname });
 });
 
 // Lancement du serveur web

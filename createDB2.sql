@@ -9,7 +9,7 @@ create table if not exists Meals (
     description text not null,
     stock integer,
     type text not null,
-    hot integer not null check (hot in (0, 1))
+    hot BOOLEAN not null check (hot in (0, 1))
 );
 
 --
@@ -32,7 +32,7 @@ create table if not exists Plans (
 create table if not exists Users (
     ID_user text not  null primary key,
     password text not null,
-    Isstaff integer not null check (Isstaff in (0, 1))
+    Isstaff BOOLEAN not null check (Isstaff in (0, 1))
 );
 
 --
@@ -68,3 +68,4 @@ create table if not exists QR_codes (
     PRIMARY KEY (ID_QRcode ,ID_Order)
 );
 
+insert into Users (ID_User,password, Isstaff) values ('rabadan.felix@gmail.com','qwerty',0);

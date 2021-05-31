@@ -3,36 +3,78 @@
 <!-- Notre page est en français -->
 
 <head>
-    <!-- Il est obligatoire de préciser un encodage de caractères et un titre pour la page -->
-    <meta charset="utf-8">
-    <!-- Pour le responsive sur mobile -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>PolyMusic - TP3</title>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Déclaration de la feuille de style du document-->
-    <link rel="stylesheet" href="public/css/style.css">
-    <!-- Polyfills pour le support de fetch dans les vieux navigateurs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.0.5/es6-promise.min.js" async></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.1/fetch.min.js" async></script>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" defer></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" defer></script>
-    <!-- Mustache ! -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js" async></script>
-    <!-- Page.js for client side routing -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.11.4/page.min.js" defer></script>
-    <!-- Notre script principal -->
-    <script src="public/js/main.js" defer></script>
-</head>
+  <!-- Il est obligatoire de préciser un encodage de caractères et un titre pour la page -->
+  <meta charset="utf-8">
+  <!-- Pour le responsive sur mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Accueil</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Déclaration de la feuille de style du document-->
+  <link rel="stylesheet" href="css/accueil.css">
+  <!-- Polyfills pour le support de fetch dans les vieux navigateurs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.0.5/es6-promise.min.js" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.1/fetch.min.js" async></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"
+    defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"
+    defer></script> -->
+  <!-- Mustache ! -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js" async></script>
+  <!-- Page.js for client side routing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.11.4/page.min.js" defer></script>
+  <!-- Notre script principal -->
+  <script src="js/main.js" defer></script>
 
 <body>
-    Quelque chose s'est mal passé :-(
-    hello
-	test sublime merge
-	hi
+  <header>
+    <h1>POLYKFÈT'</h1>
+  </header>
+
+  <main>
+    <section>
+      <article id="description">
+        <img id="pizza" src="images/pizza.png" alt="pizza">
+        <p>
+          Bienvenue sur Polykfèt', l'application de commande des plats à emporter pour les étudiants de Polytech
+        </p>
+        <p>
+          Pour commencer, veuillez vous identifier :
+        </p>
+      </article>
+      <article id="register">
+        <form class="mt-8 space-y-6" action="/login" method="POST">
+        <input type="email" name="username" placeholder="identitfiant(Email université)" /><br />
+        <input type="password" name="password" placeholder="Mot de Passe" /><br />
+        <button class="save" type="button"></button><label> se souvenir de moi</label>
+        <button type="submit"
+          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+            <!-- Heroicon name: solid/lock-closed -->
+            <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd"
+                d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                clip-rule="evenodd" />
+            </svg>
+          </span>
+          Sign in
+        </button>
+        </form>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <a href="">Comment l'utiliser ?</a><br />
+    <img id="univ" src="./images/univ.png" alt="logouniv">
+
+  </footer>
 </body>
 
 </html>

@@ -62,9 +62,9 @@ create table if not exists Orders (
 --
 
 create table if not exists QR_codes (
-    ID_QRcode integer autoincrement,
+    ID_QRcode integer, 
     ID_Order integer,
     FOREIGN KEY(ID_Order) REFERENCES Orders(ID_Order),
-    PRIMARY KEY (ID_QRcode,ID_Order)
+    PRIMARY KEY (ID_QRcode ,ID_Order)
 );
 

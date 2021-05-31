@@ -7,10 +7,11 @@
     "express-session": "^1.16.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "tailwindcss": "^2.1.2"
   },
   "scripts": {
-    "createDB": "sqlite3 PolyMusic.db < createDB2.sql",
+    "createDB": "sqlite3 PolyKfet.db < createDB2.sql",
     "start": "nodemon server.js"
   },
   "devDependencies": {

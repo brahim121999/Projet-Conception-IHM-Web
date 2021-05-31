@@ -63,7 +63,7 @@ module.exports = (passport) => {
     // et aux templates privés
     // C'est ici qu'on utilise passport pour créer une session utilisateur
     app.post('/login', function (req, res, next) {
-        if (!req.body.username) {
+        if (!req.body.email) {
             return res.send({success: false, message: 'empty username'});
         }
         if (!req.body.password) {

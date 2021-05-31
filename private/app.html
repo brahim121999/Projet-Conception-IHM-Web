@@ -33,7 +33,7 @@
     <!-- Page.js for client side routing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.11.4/page.min.js" defer></script>
     <!-- Notre script principal -->
-    <script src="js/main.js" defer></script>
+    <script src="app.js" defer></script>
 
 </head>
 
@@ -55,10 +55,9 @@
                 
                 <p class="date"> le 26/02//1992 à </p>
                 <p class = "heure">13h15</p>
-                <p class = "price">
-                Statut : 
-                <p class="statut">en cours de preparation</p>
-                <button class="detail" type="button">details</button>
+                <p class = "price"> 3$ </p>
+                <p class="status"> Statut : en cours</p>
+                <a class="detail" href="#">details</a>
             </article>
         </section>
     </main>
@@ -69,7 +68,6 @@
                 commander
             </li>
             <li>
-                Générer
                 <img id="qrcode" src="images/qrcode.png" alt="commander">
                 QR Code
             </li>

@@ -92,7 +92,7 @@ module.exports.user = {
     all: () => all('select * from Users'),
 
     insert : ({email,password,isstaff})=> post(`
-        insert into Users values('${email}','${password}',${isstaff});
+        insert into Users values(${email},${password},${isstaff});
             `),
 
     command : ({email})=>get(`
@@ -111,9 +111,9 @@ module.exports.user = {
 module.exports.order = {
     insert: ({ID_order,user,plan,meal,price,creation_time,collecting_time,status}) => post(`
         INSERT INTO Orders 
-            VALUES(${ID_order},'${user}',${plan},${meal},${price},'${creation_time}','${collecting_time}',${status})
+            VALUES(${ID_order},${user},${plan},${meal},${price},${creation_time},${collecting_time},${status})
             `),
-    all: () => all('select * from Users'),
+    all: () => all('select * from Orders'),
     select : ({ID_order})=> all(`
         select * from Orders where ID_Order = ${ID_order}
             `)
@@ -142,7 +142,7 @@ module.exports.qrcode = {
 module.exports.plan = {
     insert: ({ID_plan,meal,name,description,price}) => post(`
         INSERT INTO Plans 
-            VALUES(${ID_plan},${meal},'${name}','${description}',${price})
+            VALUES(${ID_plan},${meal},${name},${description},${price})
             `),
     delete : ({ID_plan}) => remove(`
         DELETE FROM Plans 
@@ -153,7 +153,7 @@ module.exports.plan = {
             WHERE ID_Plan = ${ID_plan} and ID_Meal = ${ID_Meal}
 
         INSERT INTO Plans 
-            VALUES(${ID_plan},${new_meal},'${new_name}','${new_desc}',${new_price})
+            VALUES(${ID_plan},${new_meal},${new_name},${new_desc},${new_price})
             `),
     select : ({ID_plan}) => all(`
         select * from Plans where ID_Plan = ${ID_plan}
@@ -169,7 +169,7 @@ module.exports.plan = {
 module.exports.meal = {
     insert : ({ID_meal,name,description,stock,type,hot}) => post(`
         INSERT INTO Meals 
-            VALUES(${ID_meal},'${name}','${description}',${stock},'${type}',${hot})
+            VALUES(${ID_meal},${name},${description},${stock},${type},${hot})
             `),
     delete : ({ID_meal}) => remove(`
         DELETE FROM Meals

@@ -1,3 +1,10 @@
+drop table if exists Users;
+drop table if exists Meals;
+drop table if exists Plans;
+drop table if exists Orders;
+drop table if exists QR_codes;
+
+
 
 --
 -- Meals
@@ -22,6 +29,7 @@ create table if not exists Plans (
     Name text not null,
     description text not null,
     price real,
+    FOREIGN KEY(ID_Meal) REFERENCES Meals(ID_Meal),
     PRIMARY KEY (ID_Plan, ID_Meal)
 );
 
@@ -30,7 +38,7 @@ create table if not exists Plans (
 --
 
 create table if not exists Users (
-    ID_user text not  null primary key,
+    ID_user text not null primary key unique,
     password text not null,
     Isstaff BOOLEAN not null check (Isstaff in (0, 1))
 );
@@ -49,12 +57,12 @@ create table if not exists Orders (
     collecting_time text,
     status integer,
     FOREIGN KEY(ID_User) REFERENCES Users(ID_User),
-    FOREIGN KEY(ID_Plan) REFERENCES Plans(ID_Plans),
-    FOREIGN KEY(ID_Meal) REFERENCES Meals(ID_Meals),
+    FOREIGN KEY(ID_Plan) REFERENCES Plans(ID_Plan),
+    FOREIGN KEY(ID_Meal) REFERENCES Meals(ID_Meal),
     PRIMARY KEY (ID_Order, ID_User, ID_Plan, ID_Meal)
 );
 
---TEXT as ISO8601 strings ("YYYY-MM-DD HH:MM:SS.SSS") date
+--TEXT as ISO8601 strings ('YYYY-MM-DD HH:MM:SS.SSS') date
 
 
 --
@@ -68,5 +76,15 @@ create table if not exists QR_codes (
     PRIMARY KEY (ID_QRcode ,ID_Order)
 );
 
+
 insert into Users (ID_User,password, Isstaff) values ('rabadan.felix@gmail.com','qwerty',0);
 insert into Users (ID_User,password, Isstaff) values ('rocheteau.axel@gmail.com','azerty',0);
+
+insert into Meals (ID_Meal,Name,description,stock,type,hot) values(1,'pudding','gateau alcoolisé',3,'type',0);
+insert into Meals (ID_Meal,Name,description,stock,type,hot) values(2,'jambon beurre','sandwich baguette',154,'type',0);
+
+insert into Plans (ID_plan,ID_Meal,Name,description,price) values (1,1,'low cost etu','all low cost things',8.50);
+insert into Plans (ID_plan,ID_Meal,Name,description,price) values (1,2,'low cost etu','all low cost things',8.50);
+
+insert into Orders (ID_Order, ID_User, ID_Plan,ID_Meal,price,creation_time,collecting_time,status) values (1,'rabadan.felix@gmail.com',1,1,3.54,'2021-05-31','15:40',1);
+insert into Orders (ID_Order, ID_User, ID_Plan,ID_Meal,price,creation_time,collecting_time,status) values (1,'rabadan.felix@gmail.com',1,2,4.50,'2021-05-31','16:40',1);

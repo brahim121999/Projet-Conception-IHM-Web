@@ -1,11 +1,12 @@
 html{
-    height : 100%
+    height : 100%;
 }
 
 body{
     margin : auto ;
     width: 100%; /* largeur obligatoire pour être centré */
-    height: 100%
+    height: 100%;
+    background-color: #fefee2;
 }
 *{
     color : black;
@@ -47,21 +48,66 @@ header button{
 main{
     height: 60%;
 }
+article{
+    position :relative;
+    margin:auto;
+    border-radius: 20px;
+    background-color: white;
+    width: 80%;
+    border:1px solid grey;
+    box-shadow: 10px 5px 5px grey;
+    height: 120px;
+}
+.date{
+    position: absolute;
+    top:5px;
+    left :10px;
+}
+.heure{
+    position:absolute;
+    background-color: orange;
+    border-radius: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
+    top :5px;
+    right :10px;
+}
+.price{
+    position: absolute;
+    top: 40%; /* poussé de la moitié de hauteur du référent */
+    left:50%;
+    font-size : 20px;
+}
+.status{
+    position: absolute;
+    left:10px;
+    bottom: 10px;
+    font-size :20px;
+}
+.detail{
+    position: absolute;
+    right:10px;
+    bottom: 5px;
+}
 
 
+
+/*footer*/
 footer{
     height: 10%;
     padding-top : 10px;
     margin: 10px;
     position : relative;
+    background-color: white;
+}
+footer img{
+    width: 80px
+    height:80px;
 }
 
-ul{
-    width: 100%;
-}
 li{
     display: inline-block;
-    padding-left: 50px;
-    padding-right: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 

@@ -1,56 +1,67 @@
-body{
-    background-image: #fbf9f9;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%; /* largeur obligatoire pour être centré */
-    height: 100%;
+html{
+    height : 100%
 }
 
+body{
+    margin : auto ;
+    width: 100%; /* largeur obligatoire pour être centré */
+    height: 100%
+}
 *{
     color : black;
     text-align: center;
 }
-#menu_haut{
-    display: inline-block;
+
+
+
+/*header*/
+header{
+    position :relative;
+    height: 20%
 }
-#bouton_quitter{/*le coller a gauche*/
-    position: relative;
-    left: 0px;
-    width : 100px;
-    height: 100px;
+header h1{
+    font-weight:900;
+    font-size : 40px;
+    color : orange;
 }
+header button{
+    position : absolute;
+    bottom : 0px;
+    left: 10px;
+}
+#menu{
+    margin-left: auto;
+    margin-right:auto;
+    margin-top :30px;
+    width: 60px;
+    height: 60px;
+}
+#bouton_quitter{
+    width: 30px;
+    height: 30px;
+}
+
+
+
+/*main*/
+main{
+    height: 60%;
+}
+
+
 footer{
-    height: 80px;
+    height: 10%;
     padding-top : 10px;
     margin: 10px;
-    position :relative;
-}
-input{
-    border : 2px solid #f48106;
-    border-radius: 5px;
-    margin : 5px;
-    width: 200px;
+    position : relative;
 }
 
-#pizza{
-    width : 100px;
-    height: 100px;
+ul{
+    width: 100%;
+}
+li{
+    display: inline-block;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
-#univ{
-    position: absolute;
-    bottom : 0;
-    left : 0;
-    height: 50%;
-}
-footer a{
-    position: absolute;
-    bottom : 0;
-    right : 0;
-}
-
-button{
-    width : 10px;
-    height: 15px;
-    border :1px solid black;
-}

@@ -13,6 +13,7 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- Déclaration de la feuille de style du document-->
   <link rel="stylesheet" href="css/accueil.css">
+  <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
   <!-- Polyfills pour le support de fetch dans les vieux navigateurs -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.0.5/es6-promise.min.js" async></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.1/fetch.min.js" async></script>
@@ -49,22 +50,13 @@
       </article>
       <article id="register">
         <form class="mt-8 space-y-6" action="/login" method="POST">
-        <input type="email" name="username" placeholder="identitfiant(Email université)" /><br />
-        <input type="password" name="password" placeholder="Mot de Passe" /><br />
-        <button class="save" type="button"></button><label> se souvenir de moi</label>
-        <button type="submit"
-          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-            <!-- Heroicon name: solid/lock-closed -->
-            <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd"
-                d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                clip-rule="evenodd" />
-            </svg>
-          </span>
-          Sign in
-        </button>
+          <input type="email" name="username" placeholder="identitfiant(Email université)" /><br />
+          <input type="password" name="password" placeholder="Mot de Passe" /><br />
+          <button class="save" type="button"></button><label> se souvenir de moi</label>
+          <button type="submit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+            Sign in
+          </button>
         </form>
       </article>
     </section>

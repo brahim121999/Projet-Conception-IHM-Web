@@ -30,7 +30,7 @@ app.use('/private',
 // Pour toutes les autres url (catch all) on renverra l'index.html
 // c'est le routeur coté client qui fera alors le routing
 app.use(function (req, res) {
-    res.sendFile('public/index.html', {'root': __dirname});
+    res.sendFile('public/page_dacceuil.html', {'root': __dirname});
 });
 
 // Lancement du serveur web

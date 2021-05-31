@@ -81,7 +81,7 @@ const put = sql => new Promise(function (resolve, reject) {
 module.exports.user = {
     select: (email) => get(`
         select ID_User,password from Users
-            where ID_User = '${email}'
+            where ID_User = "${email}"
             `),
 
     a: Promise.resolve({

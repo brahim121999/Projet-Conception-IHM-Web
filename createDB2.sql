@@ -69,3 +69,4 @@ create table if not exists QR_codes (
 );
 
 insert into Users (ID_User,password, Isstaff) values ('rabadan.felix@gmail.com','qwerty',0);
+insert into Users (ID_User,password, Isstaff) values ('rocheteau.axel@gmail.com','azerty',0);

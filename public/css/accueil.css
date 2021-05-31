@@ -1,17 +1,27 @@
+
+html{
+    height : 100%
+}
+
 body{
     background-image: linear-gradient(#f29027, #ffdba8);
-    margin-left: auto;
-    margin-right: auto;
+    margin : auto ;
     width: 100%; /* largeur obligatoire pour être centré */
-    height: 100%;
+    height: 100%
 }
 
 *{
     color : black;
     text-align: center;
 }
+header{
+    height: 20%
+}
+main{
+    height: 60%
+}
 footer{
-    height: 80px;
+    height: 10%;
     padding-top : 10px;
     margin: 10px;
     position :relative;

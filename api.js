@@ -16,27 +16,12 @@ const dbHelper = require('./dbhelper.js');
 module.exports = (passport) => {
     const app = express();
 
-    // Point d'entrée permettant de récupérer la liste des albums d'un artiste
-    // Pas besoin d'authentification pour accéder aux albums on n'utilise pas passport ici
-    app.get('/artist/:artist_id/albums', function (req, res, next) {
-        dbHelper.artists.byId(req.params.artist_id).albums.then(
-            albums => {
+    // obtenir 1 etudiant
+    app.get('/api/user/:email', function (req, res, next) {
+        dbHelper.user.select(req.params.email).then(
+            user => {
                 res.set('Content-type', 'application/json');
-                res.send(JSON.stringify(albums));
-            },
-            err => {
-                next(err);
-            },
-        );
-    });
-
-    // Point d'entrée permettant de récupérer la liste des artistes
-    // Pas besoin d'authentification pour accéder aux albums on n'utilise pas passport ici
-    app.get('/artists', function (req, res, next) {
-        dbHelper.artists.all().then(
-            artists => {
-                res.set('Content-type', 'application/json');
-                res.send(JSON.stringify(artists));
+                res.send(JSON.stringify(user));
             },
             err => {
                 next(err);
@@ -63,7 +48,7 @@ module.exports = (passport) => {
     // et aux templates privés
     // C'est ici qu'on utilise passport pour créer une session utilisateur
     app.post('/login', function (req, res, next) {
-        if (!req.body.username) {
+        if (!req.body.email) {
             return res.send({success: false, message: 'empty username'});
         }
         if (!req.body.password) {
@@ -87,3 +72,60 @@ module.exports = (passport) => {
 
     return app;
 }
+
+
+ // obtenir tous les etudiants
+app.get('/api/user', function (req, res, next) {
+    dbHelper.user.all().then(
+        user => {
+            res.set('Content-type', 'application/json');
+            res.send(JSON.stringify(user));
+        },
+        err => {
+            next(err);
+        },
+    );
+});
+
+// creation du compte pas a jour encore
+/*
+app.get('/api/user/createaccount', function (req, res, next) {
+    dbHelper.user.insert().then(
+        users => {
+            res.set('Content-type', 'application/json');
+            res.send(JSON.stringify(users));
+        },
+        err => {
+            next(err);
+        },
+    );
+});
+*/
+app.get('/api/user/command/:email', function (req, res, next) {
+    dbHelper.user.command(req.params.email).then(
+        user => {
+            res.set('Content-type', 'application/json');
+            res.send(JSON.stringify(user));
+        },
+        err => {
+            next(err);
+        },
+    );
+});
+
+// post 
+app.post('/api/user/command/:email', function (req, res, next) {
+    dbHelper.user.command(req.params.email).then(
+        user => {
+            res.set('Content-type', 'application/json');
+            res.send(JSON.stringify(user));
+        },
+        err => {
+            next(err);
+        },
+    );
+});
+
+
+
+

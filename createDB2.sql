@@ -88,3 +88,5 @@ insert into Plans (ID_plan,ID_Meal,Name,description,price) values (1,2,'low cost
 
 insert into Orders (ID_Order, ID_User, ID_Plan,ID_Meal,price,creation_time,collecting_time,status) values (1,'rabadan.felix@gmail.com',1,1,3.54,'2021-05-31','15:40',1);
 insert into Orders (ID_Order, ID_User, ID_Plan,ID_Meal,price,creation_time,collecting_time,status) values (1,'rabadan.felix@gmail.com',1,2,4.50,'2021-05-31','16:40',1);
+insert into Orders (ID_Order, ID_User, ID_Plan,ID_Meal,price,creation_time,collecting_time,status) values (2,'rabadan.felix@gmail.com',1,1,3.54,'2021-05-31','15:40',1);
+insert into Orders (ID_Order, ID_User, ID_Plan,ID_Meal,price,creation_time,collecting_time,status) values (2,'rabadan.felix@gmail.com',1,2,4.50,'2021-05-31','16:40',1);

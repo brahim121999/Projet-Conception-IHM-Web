@@ -32,6 +32,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js" async></script>
     <!-- Page.js for client side routing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.11.4/page.min.js" defer></script>
+
     <!-- Notre script principal -->
     
 
@@ -111,24 +112,44 @@
 				</div>
 				</div>	
 				<br><br>
-				
-				<button id="n3"><a id="annuler" href="#"><img id="bouton_annuler" src="images/annuler.png" alt="bouton_annuler"></a></button>
-				
-				
-				
-				
-				
-				
-				
-				
-				
-			
-            </article>
-			</div>
-			</div>
-        </section>
-    </main>
- 
+				<img id="bouton_annuler" src="images/annuler.jpg" ><br>
+				<script LANGUAGE="JavaScript">
+<!--
+function fenDynamique() {
+  var win = window.open('','exemple','resizable=yes');
+  with (win.document) {
+    writeln('<html>');
+    writeln('<head>');
+    writeln('<title>Votre commande va être annulée</title>');
+    writeln('</head>');
+    writeln('<body background=\"images/bg_gr.gif\">');
+    writeln('<center><h2>Votre commande va être annulée</h2></center><hr>');
+    writeln('<p>Confirmez vous votre choix ?</p><br>');
+    writeln('<a href="../private/app.html"><p>Oui ? </p></a>');
+	writeln('<a href="./recu.html"><p>Non ?</p></a>');
+    writeln('</body>');
+    writeln('</html>');
+  }
+}
+//-->
+</script>
+
+<form method=post>
+<p><input type="button" value="Annuler" name="B1" onClick="fenDynamique()"</p>
+
+</form>
+
+</article>
+</div>
+</div>
+ </section>
+ </main>
+<footer>
+
+<html>
+<footer>
+
+</footer> 
 </body>
 
 </html>

@@ -112,8 +112,17 @@ border-bottom:1px solid black;
 	display:inline;
 }
 
+footer img{
+	position: absolute;
+    top: 100%; 
+    left:50%;
+}
 
-
+#bouton_annuler{
+	position:absolute;
+	left:30em;
+	
+}
 
 
 

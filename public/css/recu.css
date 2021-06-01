@@ -46,38 +46,75 @@ header button#n1{
 main{
     height: 60%;
 }
-article.commande{
+
+article.col-md-12{
     position :relative;
     margin:auto;
-    border-radius: 20px;
-    background-color: white;;
-    width: 80%;
+    border-radius: 15px;
+    background-color: white;
+    width: 100%;
     border:1px solid grey;
     box-shadow: 10px 5px 5px grey;
-    height: 120px;
+    height:300px;
+	size:200%;
 	
 }
 
 
-.status{
-    left:0px;
-    top: 0px;
-    font-size :20px;
+
+div#suite_description2{
+   	color:#F4A460;
+	bottom:2em;
+	left:6em;
+	position:relative;
+	
 }
 
-
-
-
-
+div#suite_description1{
+	color:#F4A460;
+	bottom:2em;
+	left:6em;
+	position:relative;
+	
+}
 
 p#titre_commande{
 	font-weight:bold;
 	font-size:200%;
 }
 
-p#date{
+#date{
 	background-color:#F4A460;
-	font-weight:bold;
 	font-size:200%;
+	font-weight:bold;
 }
+
+#statut{
+	font-size:150%;
+}
+
+
+
+
+
+#n°1{
+border-bottom:1px solid black;
+
+
+}
+
+
+#n°2{
+border-bottom:1px solid black;
+}
+
+#plat{
+	display:inline;
+}
+
+
+
+
+
+
 

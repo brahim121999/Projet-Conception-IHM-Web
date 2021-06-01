@@ -5,62 +5,11 @@
 // Le script principal de notre application single page
 // Celui-ci effectue le routing coté client (et d'autres choses)
 
-// Notre objet contexte, qui contiendra toutes les données
-// pour les templates Mustache
-let context = {'logged': false};
 
-// fonction utilitaire permettant de faire du 
-// lazy loading (chargement à la demande) des templates
-const templates = (() => {
-    let templates = {};
-    return function load(url) {
-        if (templates[url]) {
-            return Promise.resolve(templates[url]);
-        }
-        else {
-            return fetch(url)
-                .then(res => res.text())
-                .then(text => {
-                    return templates[url] = text;
-                })
-        }
-    }
-})();
-
-// Fonction utilitaire qui permet de charger en parallèle les 
-// différents "partial" (morceaux de template. Ex: header)
-const loadPartials = (() => {
-    let partials;
-
-    return async function loadPartials() {
-        if (!partials) {
-            partials = {
-                header: templates('public/templates/header.mustache'),
-                footer: templates('public/templates/footer.mustache'),
-            };
-            const promises = Object.entries(partials)
-                .map(async function ([k, v]) {
-                    return [k, await v];
-                });
-            partials = Object.fromEntries(await Promise.all(promises));
-        }
-        return partials;
-    }
-})();
-
-// Route pour la page d'admin
-page('admin', async function () {
-    // Si on n'est pas authentifé, on affiche la page de login
-    if (!context.logged) {
-        page('/login');
-    }
-    else {
-        // Sinon on charge le template d'admin
-        // Si on n'est pas authentifié (ex: un petit malin a changé la valeur de 'logged')
-        // le serveur ne renverra tout de même pas le template puisqu'il est dans la partie 'private'
-        renderTemplate(templates('private/admin.mustache'), {...context, ariane: [{text: 'Home', url: '/'}, {text: 'Admin'}]});
-    }
-});
+//fonction asynchrone pour charger les différentes orders
+const loadorders = function (){
+    
+};
 
 // route pour la page d'authentification des utilisateurs
 page('login', async function () {
@@ -123,49 +72,56 @@ page('login', async function () {
         });
     }
 });
-
+/*
 // Route pour la page principale (index.html)
 page('/', async function () {
-    let response;
+};
+*/
 
-    // Chargement des artistes à partir de l'API
-    response = await fetch('api/artists');
-    context.artists = await response.json();
+page('/private/app.html', async function () {
+    let response = await fetch('api/order');
+    let orders = await response.json();
+            
+    let section = document.querySelector('main section');
+    for ( let i = 0; i < orders.length; i = i + 1){ // pour chaque order
+        //creation article
+        let article = document.createElement('article');
 
-    // On charge les albums de l'artiste sélectionné par défaut
-    renderArtist(0);
+        //creation des différents paragraphe
+        let date = document.createElement('p');
+        date.class = 'date';
+        date.textContent = orders[i].creation_time
 
-    // fonction interne de chargement et d'affichage des albums d'un artiste
-    async function renderArtist(id) {
-        // On charge les données depuis l'API
-        const response = await fetch('api/artist/' + id + '/albums');
-        context.albums = await response.json();
+        let heure = document.createElement('p');
+        heure.class = 'heure';
+        heure.textContent = orders[i].collecting_time
 
-        // On selectionne le bon élement dans le contexte
-        context.artists[context.selectedArtist | 0].selected = false;
-        context.artists[context.selectedArtist = id].selected = true;
+        let price = document.createElement('p');
+        price.class = 'price';
+        price.textContent = orders[i].price
 
-        // Rendu du template et insertion dans la page html
-        await renderTemplate(templates('public/templates/index.mustache'), {...context, ariane: [{text: 'Home'}]});
-        // Enregistrement de l'écouteur d'évenement sur la liste des artistes
-        let select_item = document.querySelector('#selection select');
-        select_item.addEventListener('change', ({target}) => {
-            renderArtist(target.selectedIndex);
-        });
+        let statut = document.createElement('p');
+        statut.class = 'statut';
+        if(orders[i].status == 0){
+            statut.textContent = 'Status : en cours';
+            stattut.style.color = 'red';
+        }
+        else{
+            statut.textContent = 'Status : prêt';
+            stattut.style.color = 'green';
+        }
+        // ajout comme fils de l'article
+        article.appendChild(date);
+        article.appendChild(heure);
+        article.appendChild(price);
+        article.appendChild(price);
+        article.appendChild(statut);
+        section.appendChild(article);
+
     }
 });
 
 // On démarre le routing
 //page.base('/'); // psi votre projet n'est pas hébergé à la racine de votre serveur, ajuster son url de base ici !
-page.start();
+page.start('/private/app.html');
 
-// fonction utilitaire de rendu d'un template
-async function renderTemplate(template, context) {
-    // On charge les partials (si pas déà chargés)
-    const partials = await loadPartials();
-    // On rend le template
-    const rendered = Mustache.render(await template, context, partials);
-    // Et on l'insère dans le body
-    let body = document.querySelector('body');
-    body.innerHTML = rendered;
-}

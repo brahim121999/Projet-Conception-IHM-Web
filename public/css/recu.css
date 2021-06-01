@@ -1,26 +1,83 @@
-html, body{
+html{
+    height : 100%;
+}
+
+body{
+    margin : auto ;
+    width: 100%; /* largeur obligatoire pour être centré */
     height: 100%;
+    background-color: #FFFFFF;
 }
-
-#login{
-    height: 100%;
-    align-content: center;
-}
-#login .card{
-    height : 22em;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-.container {
-    margin-bottom: 0.5em;
-}
-
-#selection, #albums{
-    height: 20em;
-}
-
-.footer {
-    background-color: #f5f5f5;
+*{
+    color : black;
     text-align: center;
-  }
+}
+
+
+
+/*header*/
+header{
+    position :relative;
+    height: 20%
+}
+header h1{
+    font-weight:900;
+    font-size : 40px;
+    color : orange;
+}
+header button#n1{
+    position : absolute;
+    bottom : 0px;
+    left: 10px;
+}
+
+
+#menu{
+    margin-left: auto;
+    margin-right:auto;
+    margin-top :30px;
+    width: 60px;
+    height: 60px;
+}
+
+
+
+/*main*/
+main{
+    height: 60%;
+}
+article.commande{
+    position :relative;
+    margin:auto;
+    border-radius: 20px;
+    background-color: white;;
+    width: 80%;
+    border:1px solid grey;
+    box-shadow: 10px 5px 5px grey;
+    height: 120px;
+	
+}
+
+
+.status{
+    left:0px;
+    top: 0px;
+    font-size :20px;
+}
+
+
+
+
+
+
+p#titre_commande{
+	font-weight:bold;
+	font-size:200%;
+}
+
+p#date{
+	background-color:#F4A460;
+	font-weight:bold;
+	font-size:200%;
+}
+

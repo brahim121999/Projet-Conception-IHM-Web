@@ -9,17 +9,8 @@ body{
     background-color: #FFFFFF;
 }
 *{
- 
+    color : black;
     text-align: center;
-}
-
-img#couverts{
-	height:60px;
-	width:60px;
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-	
 }
 
 
@@ -27,116 +18,70 @@ img#couverts{
 /*header*/
 header{
     position :relative;
-    height: 20%
 }
 
 header h1{
     font-weight:900;
     font-size : 40px;
     color : orange;
-	display: block;
+}
+
+#bouton_arriere{
+    position: absolute;
+    bottom :60px;
+    left :10px;
+    width: 35px;
+}
+#couverts{
     margin-left: auto;
-    margin-right: auto;
-	
+    margin-right:auto;
+    width: 60px;
+    height: 60px;
 }
-header h2{
-	
-	white-space:nowrap;
-	font-size:200%;
-	font-family:Arnoldboecklin;
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-	font-size:300%;
-}
-
-section h2{
-	
-	white-space:nowrap;
-	font-size:200%;
-	font-family:Arnoldboecklin;
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-	font-size:300%;
-}
-
-
-.selection{
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-	font-size:200%;
-}
-
-header button#n1{
-    position : absolute;
-    bottom : 6em;
-    left: 10px;
-}
-
-header button#n2{
-	position:absolute;
-	bottom:6em;
-	right:10px;
-}
-
 #panier{
-	height:50px;
-	
+    position: absolute;
+    bottom: 60px;
+    right:10px;
+    width: 35px;
 }
-	
-
-
-
+h2{
+    font-size: 30px;
+}
 
 /*main*/
 main{
-    height: 60%;
+    position: relative;
+    margin-top : 10px;
 }
 
-article.col-md-12{
+section{
     position :relative;
     margin:auto;
-    border-radius: 15px;
+    border-radius: 20px;
     background-color: white;
- 
-    width: 100%;
+    width: 80%;
     border:1px solid grey;
     box-shadow: 10px 5px 5px grey;
-    height:390px;
-	size:200%;
-	
+    margin-top : 20px;
 }
-
-	
-
-.Prix{
-	font-size:200%;
+h3{
+    font-size : 25px;
+    margin-bottom: 10px;
 }
-
-
-
-.bouton{
-	background-color:#F4A460;
-	color:#FFFFFF;
-	font-size:200%;
-	box-shadow: 10px 5px 5px grey;
-	border-radius: 15px;
+.plat{
+    margin-top : 20px;
+    margin-bottom : 20px;
 }
-
-
-#num_1{
-	
-	float:right;
+.price{
+    font-size : 20px;
 }
-
-.col-md-2{
-	color:#A9A9A9;
+.select{
+    border-radius: 20px;
+    background-color: orange;
+    border:1px solid grey;
+    box-shadow: 10px 5px 5px grey;
+    margin-top : 20px;
+    padding : 10px;
+    font-size : 20px;
+    margin-bottom : 20px;
 }
-
-#num_2{
-	
-	float:left;
-}
-

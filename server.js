@@ -22,6 +22,9 @@ app.use('/', express.static('public'));
 // Le contenu statique privé sera lu à partir du repertoire 'private'
 // dans cet exemple, il s'agit principalement des templates de la partie admin
 // on vérifie ici que l'utilisateur est bien authentifié
+app.use('/public',
+    express.static('public')
+);
 app.use('/private',
     require('connect-ensure-login').ensureLoggedIn(),
     express.static('private')

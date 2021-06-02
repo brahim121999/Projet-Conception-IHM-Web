@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <!-- Notre page est en français -->
@@ -7,29 +11,115 @@
     <meta charset="utf-8">
     <!-- Pour le responsive sur mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Selection_plat</title>
+    <title>Selection Plat</title>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
     <!-- Déclaration de la feuille de style du document-->
-    <link rel="stylesheet" href="public/css/selection_plat.css">
+    <link rel="stylesheet" href="./css/selection_plat.css">
     <!-- Polyfills pour le support de fetch dans les vieux navigateurs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.0.5/es6-promise.min.js" async></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.1/fetch.min.js" async></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" defer></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" defer></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"
+    defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"
+    defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"
+    defer></script>
     <!-- Mustache ! -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js" async></script>
     <!-- Page.js for client side routing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.11.4/page.min.js" defer></script>
+
     <!-- Notre script principal -->
-    <script src="public/js/main.js" defer></script>
+    
+
 </head>
 
+<!DOCTYPE html>
+<html lang="fr">
+
 <body>
-    Quelque chose s'est mal passé :-(
+    <header>
+        <h1 >POLYKFÈT'</h1>
+        <button id="n1"><a id="retour" href="./selection_menu.html"><img id="bouton_arriere" src="images/fleche.png" alt="bouton_arriere"></a></button>
+        <img id="couverts" src="./images/couvert_repas.png" alt="couverts">
+    </header>
+    <main>
+        <section>
+					
+				
+        
+                
+				<div class="container">
+				<article class="col-md-12">
+           
+                <h2><strong> Menu Fast</strong></h2> 
+				<br>
+				<p class="selection">Selectionnez un plat</p>
+				<br>
+				<br>
+				<FORM>
+				<INPUT type= "radio" name="Pizza" value="Pizza"> Pizza
+				<INPUT type= "radio" name="Pate" value="Pâtes"> Pâtes
+				
+				</FORM>
+				<br><br>
+				<p class="selection">Selectionnez un dessert</p>
+				<br><br><br>
+				
+				<FORM>
+				<INPUT type= "radio" name="Donut" value="Donut">Donut
+				<INPUT type= "radio" name="Cookie" value="Cookie"> Cookie
+				
+				</FORM>
+				
+			
+ </section>
+ </main>
+<footer>
+
+<html>
+<footer>
+
+ 
+ <script LANGUAGE="JavaScript">
+<!--
+function fenDynamique() {
+  var win = window.open('','exemple','resizable=yes');
+  with (win.document) {
+    writeln('<html>');
+    writeln('<head>');
+    writeln('<title>Votre commande va être ajoutée au panier</title>');
+    writeln('</head>');
+    writeln('<body background=\"images/bg_gr.gif\">');
+    writeln('<center><h2>Votre commande va être ajoutée au panier</h2></center><hr>');
+    writeln('<p>Commander autre chose  ?</p><br>');
+    writeln('<a href="./selection_menu.html"><p>Oui ? </p></a>');
+	writeln('<a href="./panier.html"><p>Non ?</p></a>');
+    writeln('</body>');
+    writeln('</html>');
+  }
+}
+//-->
+</script>
+
+<form method=post>
+<p><input class="bouton" type="button" value="Ajouter au panier" name="B1" onClick="fenDynamique()"</p>
+
+</form>
+
+</footer> 
 </body>
 
 </html>
+
+
+
+

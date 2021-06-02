@@ -1,12 +1,11 @@
-html{
-    height : 100%;
-}
+
 
 body{
     margin : auto ;
     width: 100%; /* largeur obligatoire pour être centré */
     height: 100%;
     background-color: #FFFFFF;
+    position: relative;
 }
 *{
     color : black;
@@ -44,7 +43,7 @@ header button#n1{
 main{
     height: 60%;
 }
-article#old1{
+main article{
     position :relative;
     margin:auto;
     border-radius: 20px;
@@ -53,23 +52,8 @@ article#old1{
     border:1px solid grey;
     box-shadow: 10px 5px 5px grey;
     height: 120px;
+    margin-bottom : 20px;
 }
-
-article#old2{
-    position :relative;
-    margin:auto;
-    border-radius: 20px;
-    background-color: white;
-    width: 80%;
-    border:1px solid grey;
-    box-shadow: 10px 5px 5px grey;
-    height: 120px;
-}
-
-
-
-
-
 
 .date{
     position: absolute;
@@ -91,7 +75,7 @@ article#old2{
     left:50%;
     font-size : 20px;
 }
-.status{
+.statut{
     position: absolute;
     left:10px;
     bottom: 10px;
@@ -107,32 +91,19 @@ article#old2{
 	position:absolute;
 	left:15px;
 	bottom:30px;
-	}
-	
-	
-#état1{
-	position:absolute;
-	left:5em;
-	bottom:30px;
-	color:orange;
-}
-
-#état2{
-	
-position:absolute;
-	left:5em;
-	bottom:30px;
-	color:blue;
 }
 
 
 /*footer*/
 footer{
-    height: 10%;
-    padding-top : 10px;
-    margin: 10px;
-    position : relative;
-    background-color: white;
+    position:relative;
+    bottom:0;
+    width:100%;
+    padding-top:50px;
+}
+
+footer ul li button img{
+    width: 80px;
 }
 
 
@@ -142,56 +113,5 @@ li{
     margin-right: 10px;
 }
 
-#titre_commande{
-	font-size:200%;
-}
-
-header button#n1{
-    position : absolute;
-    bottom : 0px;
-    left: 10px;
-}
-
-footer img#commander{
-	position:absolute;
-	left:5em;
-	bottom:30px;
-	width:50px;
-	height:50px;
-}
-
-footer img#qrcode{
-	 position: absolute;
-    top: 0px;
-    left:50%;
-	width:70px;
-	height:70px;
-}
-
-footer img#aide{
-	position: absolute;
-    right:30px;
-    bottom: 30px;
-	width:50px;
-	height:50px;
-}
-
-
-footer p#qr{
-	position: absolute;
-    top: 70%; 
-    left:50%;
 	
-}
 
-footer p#help{
-	position: absolute;
-    right:30px;
-    bottom: 0px;
-}
-	
-footer p#commande{
-	position:absolute;
-	left:5em;
-	bottom:0px;
-}

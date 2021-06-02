@@ -1,7 +1,16 @@
-const user = -1;
-const order = -1;
-const plan = -1;
-const meal = -1;
+var user = -1;
+var order = -1;
+var plan = -1;
+var meal = -1;
+
+function recupid()
+{
+    if(this.id){
+        order = this.id;
+    }
+    console.log(order);
+    return false;
+}
 
 const loadorder = async function () {
     let response = await fetch('/api/order');
@@ -39,7 +48,7 @@ const loadorder = async function () {
         let detail = document.createElement('a');
         detail.setAttribute('class','detail');
         detail.setAttribute('id',orders[i].ID_Order);
-        detail.setAttribute('href','http://localhost:8080/private/recu.html');
+        detail.setAttribute('href','http://localhost:8080/private/recu.html')
         detail.textContent = 'details';
 
 
@@ -60,10 +69,8 @@ const naviguateapp = function(){
     commande.addEventListener('click', _ => {
         window.location.href='http://localhost:8080/private/selection_menu.html';
     });
-    let detail = document.getElementsByClassName('detail');
-    detail.addEventListener('click',_=>{
-        order = detail.id;
-        console.log(order);
+    $(document).click(function(){
+        order = $(this).attr("id");
     });
 };
 

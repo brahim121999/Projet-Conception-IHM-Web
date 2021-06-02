@@ -129,6 +129,9 @@ module.exports = (passport) => {
             },
         );
     });
+    app.delete('/order/:id', function (req, res, next) {
+        dbHelper.order.delete(req.params.id)
+    });
 
 
     /* post plan

@@ -116,7 +116,11 @@ module.exports.order = {
     all: () => all('select * from Orders'),
     select : ({ID_order})=> all(`
         select * from Orders where ID_Order = ${ID_order}
-            `)
+            `),
+    delete : (ID_Order) => remove(`
+            DELETE FROM Orders 
+                WHERE ID_Order = ${ID_Order}
+                `)
 };
 
 // Cet export met à disposition des programmeurs 2 fonctions

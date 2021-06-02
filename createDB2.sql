@@ -48,18 +48,15 @@ create table if not exists Users (
 --
 
 create table if not exists Orders (
-    ID_Order integer not null,
+    ID_Order integer primary key,
     ID_User text not null,
     ID_Plan integer,
-    ID_Meal integer,
     price real,
     creation_time text,
     collecting_time text,
     status integer,
     FOREIGN KEY(ID_User) REFERENCES Users(ID_User),
-    FOREIGN KEY(ID_Plan) REFERENCES Plans(ID_Plan),
-    FOREIGN KEY(ID_Meal) REFERENCES Meals(ID_Meal),
-    PRIMARY KEY (ID_Order, ID_User, ID_Plan, ID_Meal)
+    FOREIGN KEY(ID_Plan) REFERENCES Plans(ID_Plan)
 );
 
 --TEXT as ISO8601 strings ('YYYY-MM-DD HH:MM:SS.SSS') date
@@ -86,7 +83,7 @@ insert into Meals (ID_Meal,Name,description,stock,type,hot) values(2,'jambon beu
 insert into Plans (ID_plan,ID_Meal,Name,description,price) values (1,1,'low cost etu','all low cost things',8.50);
 insert into Plans (ID_plan,ID_Meal,Name,description,price) values (1,2,'low cost etu','all low cost things',8.50);
 
-insert into Orders (ID_Order, ID_User, ID_Plan,ID_Meal,price,creation_time,collecting_time,status) values (1,'rabadan.felix@gmail.com',1,1,3.54,'2021-05-31','15:40',1);
-insert into Orders (ID_Order, ID_User, ID_Plan,ID_Meal,price,creation_time,collecting_time,status) values (1,'rabadan.felix@gmail.com',1,2,4.50,'2021-05-31','16:40',1);
-insert into Orders (ID_Order, ID_User, ID_Plan,ID_Meal,price,creation_time,collecting_time,status) values (2,'rabadan.felix@gmail.com',1,1,3.54,'2021-05-31','15:40',1);
-insert into Orders (ID_Order, ID_User, ID_Plan,ID_Meal,price,creation_time,collecting_time,status) values (2,'rabadan.felix@gmail.com',1,2,4.50,'2021-05-31','16:40',1);
+insert into Orders (ID_Order, ID_User, ID_Plan,price,creation_time,collecting_time,status) values (1,'rabadan.felix@gmail.com',1,3.54,'2021-05-31','15:40',1);
+insert into Orders (ID_Order, ID_User, ID_Plan,price,creation_time,collecting_time,status) values (2,'rabadan.felix@gmail.com',1,4.50,'2021-05-31','16:40',1);
+insert into Orders (ID_Order, ID_User, ID_Plan,price,creation_time,collecting_time,status) values (3,'rabadan.felix@gmail.com',1,3.54,'2021-05-31','15:40',1);
+insert into Orders (ID_Order, ID_User, ID_Plan,price,creation_time,collecting_time,status) values (4,'rabadan.felix@gmail.com',1,4.50,'2021-05-31','16:40',1);

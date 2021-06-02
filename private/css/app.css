@@ -1,0 +1,199 @@
+html{
+    height : 100%;
+}
+
+body{
+    margin : auto ;
+    width: 100%; /* largeur obligatoire pour être centré */
+    height: 100%;
+    background-color: #FFFFFF;
+}
+*{
+    color : black;
+    text-align: center;
+}
+
+
+
+/*header*/
+header{
+    position :relative;
+    height: 20%
+}
+header h1{
+    font-weight:900;
+    font-size : 40px;
+    color : orange;
+}
+header button#n1{
+    position : absolute;
+    bottom : 0px;
+    left: 10px;
+}
+
+
+#menu{
+    margin-left: auto;
+    margin-right:auto;
+    margin-top :30px;
+    width: 60px;
+    height: 60px;
+}
+
+
+
+/*main*/
+main{
+    height: 60%;
+}
+article#old1{
+    position :relative;
+    margin:auto;
+    border-radius: 20px;
+    background-color: white;
+    width: 80%;
+    border:1px solid grey;
+    box-shadow: 10px 5px 5px grey;
+    height: 120px;
+}
+
+article#old2{
+    position :relative;
+    margin:auto;
+    border-radius: 20px;
+    background-color: white;
+    width: 80%;
+    border:1px solid grey;
+    box-shadow: 10px 5px 5px grey;
+    height: 120px;
+}
+
+
+
+
+
+
+.date{
+    position: absolute;
+    top:5px;
+    left :10px;
+}
+.heure{
+    position:absolute;
+    background-color:#F4A460;
+    border-radius: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
+    top :5px;
+    right :10px;
+}
+.price{
+    position: absolute;
+    top: 40%; /* poussé de la moitié de hauteur du référent */
+    left:50%;
+    font-size : 20px;
+}
+.status{
+    position: absolute;
+    left:10px;
+    bottom: 10px;
+    font-size :20px;
+}
+.detail{
+    position: absolute;
+    right:10px;
+    bottom: 5px;
+}
+
+.description{
+	position:absolute;
+	left:15px;
+	bottom:30px;
+	}
+	
+	
+#état1{
+	position:absolute;
+	left:5em;
+	bottom:30px;
+	color:orange;
+}
+
+#état2{
+	
+position:absolute;
+	left:5em;
+	bottom:30px;
+	color:blue;
+}
+
+
+/*footer*/
+footer{
+    height: 10%;
+    padding-top : 10px;
+    margin: 10px;
+    position : relative;
+    background-color: white;
+}
+
+
+li{
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#titre_commande{
+	font-size:200%;
+}
+
+header button#n1{
+    position : absolute;
+    bottom : 0px;
+    left: 10px;
+}
+
+footer img#commander{
+	position:absolute;
+	left:5em;
+	bottom:30px;
+	width:50px;
+	height:50px;
+}
+
+footer img#qrcode{
+	 position: absolute;
+    top: 0px;
+    left:50%;
+	width:70px;
+	height:70px;
+}
+
+footer img#aide{
+	position: absolute;
+    right:30px;
+    bottom: 30px;
+	width:50px;
+	height:50px;
+}
+
+
+footer p#qr{
+	position: absolute;
+    top: 70%; 
+    left:50%;
+	
+}
+
+footer p#help{
+	position: absolute;
+    right:30px;
+    bottom: 0px;
+}
+	
+footer p#commande{
+	position:absolute;
+	left:5em;
+	bottom:0px;
+}

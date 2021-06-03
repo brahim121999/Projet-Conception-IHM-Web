@@ -114,7 +114,7 @@ module.exports.order = {
             VALUES(${ID_order},${user},${plan},${meal},${price},${creation_time},${collecting_time},${status})
             `),
     all: () => all('select * from Orders'),
-    select : ({ID_order})=> all(`
+    select : (ID_order)=> get(`
         select * from Orders where ID_Order = ${ID_order}
             `),
     delete : (ID_Order) => remove(`

@@ -1,18 +1,13 @@
-var user = -1;
-var order = -1;
-var plan = -1;
-var meal = -1;
+'use strict';
 
-function recupid()
-{
-    if(this.id){
-        order = this.id;
-    }
-    console.log(order);
-    return false;
-}
 
-const loadorder = async function () {
+
+const reply_click = function(id){
+    sessionStorage.setItem("order",id);
+};
+
+
+const loadorders = async function () {
     let response = await fetch('/api/order');
     let orders = await response.json();
             
@@ -48,7 +43,8 @@ const loadorder = async function () {
         let detail = document.createElement('a');
         detail.setAttribute('class','detail');
         detail.setAttribute('id',orders[i].ID_Order);
-        detail.setAttribute('href','http://localhost:8080/private/recu.html')
+        detail.setAttribute('onClick','reply_click(this.id)');
+        detail.setAttribute('href','recu.html');
         detail.textContent = 'details';
 
 
@@ -64,13 +60,32 @@ const loadorder = async function () {
     }
 };
 
+const loadorder = async function(idorder){
+    let response = await fetch('/api/order/'+ idorder);
+    let order = await response.json();
+
+    let h3 = document.querySelector('main h3');
+    h3.textContent = order.creation_time + ' a ' + order.collecting_time
+
+    let statut = document.getElementById('statut');
+    if(order.status == 0){
+        statut.textContent = 'Status : en cours';
+        statut.style.color = 'red';
+    }
+    else{
+        statut.textContent = 'Status : prêt';
+        statut.style.color = 'green';
+    }
+    let prixfin = document.getElementById('prix_fin');
+    prixfin.textContent = order.price + '€';
+
+}
+
+
 const naviguateapp = function(){
     let commande = document.getElementById('commande');
     commande.addEventListener('click', _ => {
         window.location.href='http://localhost:8080/private/selection_menu.html';
-    });
-    $(document).click(function(){
-        order = $(this).attr("id");
     });
 };
 
@@ -78,8 +93,11 @@ const naviguaterecu = function(){
     let annuler = document.getElementById('bouton_annuler');
     annuler.addEventListener('click', _ => {
         if ( confirm( "voulez-vous supprimer cette commande" ) ) {
-            if (order != -1){
-                fetch('api/order'+order, {method: 'DELETE',})
+            let order = sessionStorage.getItem("order");
+            order = Number(order);
+            console.log(typeof(order));
+            if (order){
+                fetch('api/order/:'+order, {method: 'DELETE',})
                 .then(_ => {
                     window.location.href='http://localhost:8080/private/app.html';
                     alert("vous avez supprimé la commande");
@@ -94,10 +112,12 @@ const naviguaterecu = function(){
 };
 
 if (window.location.href=='http://localhost:8080/private/app.html'){
-    loadorder();
+
+    loadorders();
     naviguateapp();
 }
 else if(window.location.href=='http://localhost:8080/private/recu.html'){
 
+    loadorder(sessionStorage.getItem("order"));
     naviguaterecu();
 }

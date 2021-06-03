@@ -107,7 +107,7 @@ module.exports = (passport) => {
     */
 
     app.get('/order/:id', function (req, res, next) {
-        dbHelper.order.select(req.params.id).then(
+        dbHelper.order.select(Number(req.params.id)).then(
             order => {
                 res.set('Content-type', 'application/json');
                 res.send(JSON.stringify(order));
@@ -126,11 +126,19 @@ module.exports = (passport) => {
             },
             err => {
                 next(err);
-            },
+            }
         );
     });
     app.delete('/order/:id', function (req, res, next) {
-        dbHelper.order.delete(req.params.id)
+        dbHelper.order.delete(req.params.id).then(
+            order => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(order));
+            },
+            err => {
+                next(err);
+            }
+        );
     });
 
 

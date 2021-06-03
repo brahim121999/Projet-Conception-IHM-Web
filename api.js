@@ -13,10 +13,12 @@ const app = express();
 
 module.exports = (passport) => {
 
-    /* post
-    app.get('/api/user/createaccount', function (req, res, next) {
-        dbHelper.user.insert().then(
+    /* post */
+
+    app.post('createaccount/:email/:password', function (req, res, next) {
+        dbHelper.user.insert(req.params.email, req.params.password).then(
             users => {
+                console.log('creation compte');
                 res.set('Content-type', 'application/json');
                 res.send(JSON.stringify(users));
             },
@@ -24,8 +26,8 @@ module.exports = (passport) => {
                 next(err);
             },
         );
-    }),
-    */
+    });
+
 
     // obtenir 1 etudiant
     app.get('/user/:email', function (req, res, next) {
@@ -38,9 +40,9 @@ module.exports = (passport) => {
                 next(err);
             },
         );
-    }),
+    });
 
-        // obtenir tous les etudiants
+    // obtenir tous les etudiants
     app.get('/user', function (req, res, next) {
         dbHelper.user.all().then(
             user => {
@@ -51,7 +53,7 @@ module.exports = (passport) => {
                 next(err);
             },
         );
-    }),
+    });
 
     app.get('/user/command/:email', function (req, res, next) {
         dbHelper.user.command(req.params.email).then(
@@ -213,9 +215,8 @@ module.exports = (passport) => {
 
 
     app.delete('/meal/:id', function (req, res, next) {
-            dbHelper.meal.delete(req.params.id)
-        },
-    );
+        dbHelper.meal.delete(req.params.id)
+    }, );
 
 
     /*update meal

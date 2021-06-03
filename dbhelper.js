@@ -91,10 +91,9 @@ module.exports.user = {
 
     all: () => all('select * from Users'),
 
-    insert : (email,password,isstaff)=> post(`
-        insert into Users values(${email},${password},${isstaff});
+    insert : (email,password)=> post(`
+        insert into Users (ID_User,password,Isstaff) values(${email},${password},0);
             `),
-
     command : (email)=>get(`
         select plans, meals ,price ,creation_time ,collecting_time, status
             from Orders, Users

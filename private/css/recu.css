@@ -64,7 +64,7 @@ section{
     font-size : 25px;
     margin : 20px;
 }
-table{
+#main{
     margin : auto;
 }
 thead{
@@ -98,4 +98,13 @@ tbody{
     bottom : 5px;
     left : 50%;
     transform: translateX(-50%);
+}
+
+
+#description{
+	color:orange;
+}
+
+#tot{
+	margin:auto;
 }

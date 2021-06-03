@@ -1,112 +1,119 @@
-html{
-    height : 100%;
+html {
+    height: 100%;
 }
 
-body{
-    margin : auto ;
-    width: 100%; /* largeur obligatoire pour être centré */
+body {
+    margin: auto;
+    width: 100%;
+    /* largeur obligatoire pour être centré */
     height: 100%;
     background-color: #FFFFFF;
 }
-*{
-    color : black;
+
+* {
+    color: black;
     text-align: center;
 }
 
 /*header*/
-header{
-    position :relative;
-    margin-bottom : 20px;
+header {
+    position: relative;
+    margin-bottom: 20px;
 }
 
-header h1{
-    font-weight:900;
-    font-size : 40px;
-    color : orange;
+header h1 {
+    font-weight: 900;
+    font-size: 40px;
+    color: orange;
 }
 
-header button#n1{
-    position : absolute;
-    bottom : 30px;
+header button#n1 {
+    position: absolute;
+    bottom: 30px;
     left: 10px;
     width: 35px;
-    border : none;
+    border: none;
     background-color: white;
 }
 
-h2{
+h2 {
     margin-top: 20px;
     font-size: 30px;
 }
 
 
 /*main*/
-section{
-    margin-bottom :10px;
+section {
+    margin-bottom: 10px;
 }
-#nomenu{
+
+#nomenu {
     visibility: hidden;
 }
-#menu{
-    position :relative;
-    margin:auto;
+
+#menu {
+    position: relative;
+    margin: auto;
     border-radius: 20px;
     background-color: white;
     width: 80%;
-    border:1px solid grey;
+    border: 1px solid grey;
     box-shadow: 10px 5px 5px grey;
-    margin-top : 20px;
+    margin-top: 20px;
     height: 140px;
 }
-#poubelle{
+
+#poubelle {
     position: absolute;
-    top : 10px;
-    left :10px;
+    top: 10px;
+    left: 10px;
     width: 20px;
 }
-h3{
-    font-size : 25px;
-}
-#price{
-    position : absolute;
-    bottom : 0;
-    right : 10px;
+
+h3 {
+    font-size: 25px;
 }
 
-#total{
-    position :relative;
-    margin-left:auto;
-    margin-right:auto;
-    margin-top : 20px;
-    padding :10px;
+#price {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
+
+#total {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 10px;
     border-radius: 20px;
     background-color: white;
     width: 80%;
-    border:1px solid grey;
+    border: 1px solid grey;
     box-shadow: 10px 5px 5px grey;
-    font-size : 20px;
+    font-size: 20px;
 }
 
-input{
+input {
     width: 30px;
 }
 
 /*footer*/
-footer{
-    margin-top : 20px;
+footer {
+    margin-top: 20px;
 }
 
-footer button{
+footer button {
     border-radius: 20px;
     background-color: orange;
-    border:1px solid grey;
+    border: 1px solid grey;
     box-shadow: 10px 5px 5px grey;
-    margin-top : 20px;
-    padding : 10px;
-    font-size : 20px;
-    margin-bottom : 20px;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 
 #valider {
-	color:#FFFFFF;
+    color: #FFFFFF;
 }

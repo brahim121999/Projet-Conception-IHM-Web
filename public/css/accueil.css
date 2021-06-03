@@ -1,81 +1,83 @@
-
-html{
-    height : 100%
-}
-
-body{
-    background-image: linear-gradient(#f29027, #ffdba8);
-    margin : auto ;
-    width: 100%; /* largeur obligatoire pour être centré */
+html {
     height: 100%
 }
 
-*{
-    color : black;
+body {
+    background-image: linear-gradient(#f29027, #ffdba8);
+    margin: auto;
+    width: 100%;
+    /* largeur obligatoire pour être centré */
+    height: 100%
+}
+
+* {
+    color: black;
     text-align: center;
 }
-header{
+
+header {
     height: 20%;
-    margin-bottom :20px;
+    margin-bottom: 20px;
 }
-main{
+
+main {
     height: 60%
 }
-footer{
+
+footer {
     height: 10%;
-    padding-top : 10px;
+    padding-top: 10px;
     margin: 10px;
-    position :relative;
+    position: relative;
 }
-input#n1{
-    border : 2px solid #f48106;
+
+input#n1 {
+    border: 2px solid #f48106;
     border-radius: 5px;
-    margin : 5px;
+    margin: 5px;
     width: 200px;
 }
 
-input#n2{
-    border : 2px solid #f48106;
+input#n2 {
+    border: 2px solid #f48106;
     border-radius: 5px;
-    margin : 5px;
+    margin: 5px;
     width: 200px;
 }
 
 
-#pizza{
-    width : 100px;
+#pizza {
+    width: 100px;
     height: 100px;
-	margin-left:auto;
-	margin-right:auto;
-	
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
-#univ{
+#univ {
     position: absolute;
-    bottom : 0;
-    left : 0;
+    bottom: 0;
+    left: 0;
     height: 50%;
 }
-footer a{
+
+footer a {
     position: absolute;
-    bottom : 0;
-    right : 0;
-	color:#FFFFFF;
+    bottom: 0;
+    right: 0;
+    color: #FFFFFF;
 }
 
-p{
-	color:#FFFFFF;
+p {
+    color: #FFFFFF;
 }
 
-label{
-	color:#FFFFFF;
+label {
+    color: #FFFFFF;
 }
 
-body header h1{
-	color:#FFFFFF;
-	font-size:50pt;
-	position:relative;
+body header h1 {
+    color: #FFFFFF;
+    font-size: 50pt;
+    position: relative;
 }
-	
-
-	

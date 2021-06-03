@@ -16,12 +16,14 @@ module.exports = (passport) => {
 
     /* post */
     app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(bodyParser.urlencoded({
+        extended: false
+    }));
 
 
 
     app.post('/createaccount', function (req, res, next) {
-        dbHelper.user.insert(req.body.email,req.body.password).then(
+        dbHelper.user.insert(req.body.email, req.body.password).then(
             user => {
                 res.set('Content-type', 'application/json');
                 res.send(JSON.stringify(user));
@@ -101,8 +103,8 @@ module.exports = (passport) => {
     /* post order*/
     app.post('/order/post', function (req, res, next) {
         console.log(req.body);
-        console.log(req.body.ID_User,req.body.ID_Plan,req.body.price,req.body.creation_time,req.body.collecting_time,req.body.status);
-        dbHelper.order.select(req.body.ID_User,req.body.ID_Plan,req.body.price,req.body.creation_time,req.body.collecting_time,req.body.status).then(
+        console.log(req.body.ID_User, req.body.ID_Plan, req.body.price, req.body.creation_time, req.body.collecting_time, req.body.status);
+        dbHelper.order.select(req.body.ID_User, req.body.ID_Plan, req.body.price, req.body.creation_time, req.body.collecting_time, req.body.status).then(
             order => {
                 res.set('Content-type', 'application/json');
                 res.send(JSON.stringify(order));

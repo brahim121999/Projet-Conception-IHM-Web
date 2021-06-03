@@ -30,7 +30,9 @@ app.use('/private',
     express.static('private')
 );
 app.post('/login',
-    passport.authenticate('local', { failureRedirect: '/index.html' }),
+    passport.authenticate('local', {
+        failureRedirect: '/index.html'
+    }),
     function (req, res) {
         res.redirect('/private/app.html');
     }
@@ -39,7 +41,9 @@ app.post('/login',
 // Pour toutes les autres url (catch all) on renverra l'index.html
 // c'est le routeur coté client qui fera alors le routing
 app.use(function (req, res) {
-    res.sendFile('public/index.html', { 'root': __dirname });
+    res.sendFile('public/index.html', {
+        'root': __dirname
+    });
 });
 
 // Lancement du serveur web

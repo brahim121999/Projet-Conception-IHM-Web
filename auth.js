@@ -61,8 +61,14 @@ passport.deserializeUser(function (id, cb) {
 // l'authentification sur toutes les routes du site 
 module.exports = function (app) {
     app.use(require('cookie-parser')());
-    app.use(require('body-parser').urlencoded({extended: true}));
-    app.use(require('express-session')({secret: 'keyboard cat', resave: false, saveUninitialized: false}));
+    app.use(require('body-parser').urlencoded({
+        extended: true
+    }));
+    app.use(require('express-session')({
+        secret: 'keyboard cat',
+        resave: false,
+        saveUninitialized: false
+    }));
 
     // Initialize Passport and restore authentication state, if any, from the
     // session.

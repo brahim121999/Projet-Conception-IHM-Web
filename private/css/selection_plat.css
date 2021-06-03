@@ -1,23 +1,25 @@
-html{
-    height : 100%;
+html {
+    height: 100%;
 }
 
-body{
-    margin : auto ;
-    width: 100%; /* largeur obligatoire pour être centré */
+body {
+    margin: auto;
+    width: 100%;
+    /* largeur obligatoire pour être centré */
     height: 100%;
     background-color: #FFFFFF;
 }
-*{
-    color : black;
+
+* {
+    color: black;
     text-align: center;
 }
 
-img#couverts{
-	height:60px;
-	width:60px;
+img#couverts {
+    height: 60px;
+    width: 60px;
     margin-left: auto;
-    margin-right: auto;	
+    margin-right: auto;
 }
 
 
@@ -25,58 +27,60 @@ img#couverts{
 
 
 /*header*/
-header{
-    position :relative;
+header {
+    position: relative;
     height: 20%
 }
 
-header h1{
-    font-weight:900;
-    font-size : 40px;
-    color : orange;
-	display: block;
+header h1 {
+    font-weight: 900;
+    font-size: 40px;
+    color: orange;
+    display: block;
     margin-left: auto;
     margin-right: auto;
-	
+
 }
 
-header button#n1{
-    position : absolute;
-    bottom : 30px;
+header button#n1 {
+    position: absolute;
+    bottom: 30px;
     left: 10px;
     width: 35px;
-    border : none;
+    border: none;
     background-color: white;
 }
 
 
 /*main*/
-h2{
+h2 {
     margin-top: 20px;
     font-size: 30px;
 }
-h3{
-    font-size : 25px;
+
+h3 {
+    font-size: 25px;
 }
-section{
-    position :relative;
-    margin:auto;
+
+section {
+    position: relative;
+    margin: auto;
     border-radius: 20px;
     background-color: white;
     width: 80%;
-    border:1px solid grey;
+    border: 1px solid grey;
     box-shadow: 10px 5px 5px grey;
-    margin-top : 20px;
+    margin-top: 20px;
 }
 
 /*footer*/
-footer input{
+footer input {
     border-radius: 20px;
     background-color: orange;
-    border:1px solid grey;
+    border: 1px solid grey;
     box-shadow: 10px 5px 5px grey;
-    margin-top : 20px;
-    padding : 10px;
-    font-size : 20px;
-    margin-bottom : 20px;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 20px;
 }

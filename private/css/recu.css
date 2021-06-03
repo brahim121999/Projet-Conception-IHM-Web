@@ -1,48 +1,52 @@
-html{
-    height : 100%;
+html {
+    height: 100%;
 }
 
-body{
-    margin : auto ;
-    width: 100%; /* largeur obligatoire pour être centré */
+body {
+    margin: auto;
+    width: 100%;
+    /* largeur obligatoire pour être centré */
     height: 100%;
     background-color: #FFFFFF;
 }
-*{
-    color : black;
+
+* {
+    color: black;
     text-align: center;
 }
 
 /*header*/
-header{
-    position :relative;
+header {
+    position: relative;
     height: 20%
 }
 
-header h1{
-    font-weight:900;
-    font-size : 40px;
-    color : orange;
+header h1 {
+    font-weight: 900;
+    font-size: 40px;
+    color: orange;
 }
 
-header button#n1{
-    position : absolute;
-    bottom : 0px;
+header button#n1 {
+    position: absolute;
+    bottom: 0px;
     left: 10px;
 }
-#menu{
+
+#menu {
     margin-left: auto;
-    margin-right:auto;
-    margin-top :30px;
+    margin-right: auto;
+    margin-top: 30px;
     width: 60px;
     height: 60px;
 }
 
 /*main*/
-main h2{
+main h2 {
     font-size: 30px;
 }
-main h3{
+
+main h3 {
     margin: auto;
     width: 90%;
     font-size: 30px;
@@ -50,61 +54,69 @@ main h3{
     border-radius: 10px;
 }
 
-section{
-    position :relative;
-    margin:auto;
+section {
+    position: relative;
+    margin: auto;
     border-radius: 20px;
     background-color: white;
     width: 80%;
-    border:1px solid grey;
+    border: 1px solid grey;
     box-shadow: 10px 5px 5px grey;
-    margin-top : 20px;
+    margin-top: 20px;
 }
-#statut{
-    font-size : 25px;
-    margin : 20px;
+
+#statut {
+    font-size: 25px;
+    margin: 20px;
 }
-#main{
-    margin : auto;
+
+#main {
+    margin: auto;
 }
-thead{
-    border-bottom: black 2px solid;
-}
-th{
-    font-size: 20px;
-    padding-left : 5px;
-    padding-right: 5px;
-}
-tbody{
+
+thead {
     border-bottom: black 2px solid;
 }
 
-#end{
+th {
+    font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+tbody {
+    border-bottom: black 2px solid;
+}
+
+#end {
     margin-top: 20px;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
-#total{
+
+#total {
     font-size: 20px;
     text-align: left;
 }
-#prix_fin{
+
+#prix_fin {
     font-size: 20px;
     text-align: right;
 }
-#bouton_annuler{
-    position : absolute;
-    bottom : 5px;
-    left : 50%;
+
+#bouton_annuler {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
     transform: translateX(-50%);
 }
 
 
-#description{
-	color:orange;
+#description {
+    color: orange;
 }
 
-#tot{
-	margin:auto;
+#tot {
+    margin: auto;
 }

@@ -2,9 +2,12 @@
 
 
 
-const reply_click = function(id){
-    sessionStorage.setItem("order",id);
+const reply_click = function(name,id){
+    sessionStorage.setItem(name,id);
 };
+
+console.log(sessionStorage.getItem("plan"));
+console.log(sessionStorage.getItem("order"))
 
 
 const loadorders = async function () {
@@ -43,7 +46,7 @@ const loadorders = async function () {
         let detail = document.createElement('a');
         detail.setAttribute('class','detail');
         detail.setAttribute('id',orders[i].ID_Order);
-        detail.setAttribute('onClick','reply_click(this.id)');
+        detail.setAttribute('onClick','reply_click("order",this.id)');
         detail.setAttribute('href','recu.html');
         detail.textContent = 'details';
 
@@ -62,7 +65,6 @@ const loadorders = async function () {
 
 const loadorder = async function(idorder){
     // fetch
-    console.log(idorder);
     let responseorder = await fetch('/api/order/'+ idorder);
     let order = await responseorder.json();
 
@@ -114,6 +116,28 @@ const loadorder = async function(idorder){
 
 };
 
+const naviguaterecu = function(){
+    let annuler = document.getElementById('bouton_annuler');
+    annuler.addEventListener('click', _ => {
+        if ( confirm( "voulez-vous supprimer cette commande" ) ) {
+            let order = sessionStorage.getItem("order");
+            order = Number(order);
+            if (order){
+                fetch('api/order/:'+order, {method: 'DELETE',})
+                .then(_ => {
+                    window.location.href='http://localhost:8080/private/app.html';
+                    alert("vous avez supprimé la commande");
+                });
+            } 
+            else {
+                alert("selectionner la commande depuis l'écran des commandes");
+                window.location.href='http://localhost:8080/private/app.html';
+            }     
+        }
+    });
+};
+
+
 const loadmenus = async function(){
     let response = await fetch('/api/plan');
     let plans = await response.json();
@@ -164,7 +188,10 @@ const loadmenus = async function(){
         p.textContent = plans[i].price + "€";
 
         let a = document.createElement('a');
+        a.setAttribute('id',plans[i].ID_Plan);
         a.setAttribute('href','selection_plat.html');
+        a.setAttribute('onClick','reply_click("plan",this.id)');
+
         let button = document.createElement('button');
         button.textContent = "selectionner";
         button.setAttribute('class','select');
@@ -178,40 +205,13 @@ const loadmenus = async function(){
     }
 };
 
+const loadmenu = async function(id){
 
-const naviguateapp = function(){
-    let commande = document.getElementById('commande');
-    commande.addEventListener('click', _ => {
-        window.location.href='http://localhost:8080/private/selection_menu.html';
-    });
 };
 
-const naviguaterecu = function(){
-    let annuler = document.getElementById('bouton_annuler');
-    annuler.addEventListener('click', _ => {
-        if ( confirm( "voulez-vous supprimer cette commande" ) ) {
-            let order = sessionStorage.getItem("order");
-            order = Number(order);
-            console.log(typeof(order));
-            if (order){
-                fetch('api/order/:'+order, {method: 'DELETE',})
-                .then(_ => {
-                    window.location.href='http://localhost:8080/private/app.html';
-                    alert("vous avez supprimé la commande");
-                });
-            } 
-            else {
-                alert("selectionner la commande depuis l'écran des commandes");
-                window.location.href='http://localhost:8080/private/app.html';
-            }     
-        }
-    });
-};
 
 if (window.location.href=='http://localhost:8080/private/app.html'){
-
     loadorders();
-    naviguateapp();
 }
 else if(window.location.href=='http://localhost:8080/private/recu.html'){
     loadorder(sessionStorage.getItem("order"));
@@ -220,6 +220,7 @@ else if(window.location.href=='http://localhost:8080/private/recu.html'){
 else if(window.location.href=='http://localhost:8080/private/selection_menu.html'){
     loadmenus();
 }
-else{
+else if(window.location.href=='http://localhost:8080/private/selection_menu.html'){
 
+    loadmenu(sessionStorage.getItem("plan"));
 }

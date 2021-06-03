@@ -16,11 +16,11 @@ body{
 img#couverts{
 	height:60px;
 	width:60px;
-	display: block;
     margin-left: auto;
-    margin-right: auto;
-	
+    margin-right: auto;	
 }
+
+
 
 
 
@@ -39,77 +39,44 @@ header h1{
     margin-right: auto;
 	
 }
-h2{
-	
-	white-space:nowrap;
-	font-size:200%;
-	font-family:Arnoldboecklin;
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-	font-size:300%;
-}
-
-.selection{
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-	font-size:200%;
-}
 
 header button#n1{
     position : absolute;
-    bottom : 6em;
+    bottom : 30px;
     left: 10px;
+    width: 35px;
+    border : none;
+    background-color: white;
 }
-
-
-#menu{
-    margin-left: auto;
-    margin-right:auto;
-    margin-top :30px;
-    width: 60px;
-    height: 60px;
-}
-
 
 
 /*main*/
-main{
-    height: 60%;
+h2{
+    margin-top: 20px;
+    font-size: 30px;
 }
-
-article.col-md-12{
+h3{
+    font-size : 25px;
+}
+section{
     position :relative;
     margin:auto;
-    border-radius: 15px;
+    border-radius: 20px;
     background-color: white;
-    width: 100%;
+    width: 80%;
     border:1px solid grey;
     box-shadow: 10px 5px 5px grey;
-    height:520px;
-	size:200%;
-	
+    margin-top : 20px;
 }
 
-
-footer img{
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-input[type=radio] {
-    font-size:150%;
-	color:red;
-}
-
-
-.bouton{
-	background-color:#F4A460;
-	color:#FFFFFF;
-	font-size:200%;
-	box-shadow: 10px 5px 5px grey;
-	border-radius: 15px;
+/*footer*/
+footer input{
+    border-radius: 20px;
+    background-color: orange;
+    border:1px solid grey;
+    box-shadow: 10px 5px 5px grey;
+    margin-top : 20px;
+    padding : 10px;
+    font-size : 20px;
+    margin-bottom : 20px;
 }

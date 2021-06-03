@@ -51,44 +51,36 @@
   </header>
   <main>
     <section>
-
-
-
-
-      <div class="container">
-        <article class="col-md-12">
-
-          <h2><strong> Menu Fast</strong></h2>
-          <br>
-          <p class="selection">Selectionnez un plat</p>
-          <br>
-          <br>
-          <FORM>
-            <INPUT type="radio" name="Pizza" value="Pizza"> Pizza
-            <INPUT type="radio" name="Pate" value="Pâtes"> Pâtes
-
-          </FORM>
-          <br><br>
-          <p class="selection">Selectionnez un dessert</p>
-          <br><br><br>
-
-          <FORM>
-            <INPUT type="radio" name="Donut" value="Donut">Donut
-            <INPUT type="radio" name="Cookie" value="Cookie"> Cookie
-
-          </FORM>
+      <article>
+      <h2>Menu fast</h2>
+      <h3 id="plat">selectionner un plat</h3>
+      <div>
+        <input type="radio" id="plat1" name="plat" value="plat1" checked>
+        <label for="plat1">Plat1</label>
       </div>
-
-
+      
+      <div>
+        <input type="radio" id="plat2" name="plat" value="plat2" checked>
+        <label for="plat2">Plat2</label>
+      </div>
+      
+    </article>
+    <article>
+      <h3 id = dessert>selectionner un dessert</h3>
+        <div>
+          <input type="radio" id="dessert1" name="dessert" value="dessert1" checked>
+          <label for="dessert1">Dessert1</label>
+        </div>
+        
+        <div>
+          <input type="radio" id="dessert2" name="dessert" value="dessert2" checked>
+          <label for="dessert2">Dessert2</label>
+        </div>
+    </article>
     </section>
   </main>
   <footer>
-
-    <form method=post>
-      <p><input class="bouton" type="button" value="Ajouter au panier" name="B1" onClick="fenDynamique()" </p>
-
-    </form>
-
+      <p><input class="bouton" type="button" value="Ajouter au panier" name="B1" ></p>
   </footer>
 </body>
 

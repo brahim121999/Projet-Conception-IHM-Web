@@ -9,5 +9,9 @@ if (window.location.href=='http://localhost:8080/login'){
     sessionStorage.setItem("dessert",null);
     sessionStorage.setItem("order",null);
 
-    console.log(sessionStorage.getItem("plat"))
+    let button = document.getElementById("submit");
+        button.addEventListener('click', _=>{
+            let email = document.getElementById("n1");
+            sessionStorage.setItem("user",email.value);
+        });
 }

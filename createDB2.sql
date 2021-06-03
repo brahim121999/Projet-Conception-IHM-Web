@@ -119,6 +119,8 @@ insert into Plan_Meals (ID_Plan,Plat1,Plat2,Dessert1,Dessert2) values (1,3,4,1,2
 
 insert into Order_Meals (ID_Order,Plat,Dessert) values(1,3,2);
 insert into Order_Meals (ID_Order,Plat,Dessert) values(2,4,1);
+insert into Order_Meals (ID_Order,Plat,Dessert) values(3,4,1);
 
-insert into Orders (ID_Order, ID_User, ID_Plan,price,creation_time,collecting_time,status) values (1,'rabadan.felix@gmail.com',1,3.54,'2021-05-31','15:40',1);
-insert into Orders (ID_Order, ID_User, ID_Plan,price,creation_time,collecting_time,status) values (2,'rabadan.felix@gmail.com',1,4.50,'2021-05-31','16:40',1);
+insert into Orders (ID_Order, ID_User, ID_Plan,price,creation_time,collecting_time,status) values (1,'rabadan.felix@gmail.com',1,8.5,'2021-05-31','15:40',1);
+insert into Orders (ID_Order, ID_User, ID_Plan,price,creation_time,collecting_time,status) values (2,'rabadan.felix@gmail.com',1,8.5,'2021-05-31','16:40',1);
+insert into Orders (ID_Order, ID_User, ID_Plan,price,creation_time,collecting_time,status) values (3,'rocheteau.axel@gmail.com',1,8.5,'2021-05-31','16:40',1);

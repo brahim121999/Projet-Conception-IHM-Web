@@ -1,15 +1,15 @@
 'use strict';
 
-console.log(sessionStorage.getItem("plat"))
-console.log(sessionStorage.getItem("dessert"))
+console.log(sessionStorage.getItem("user"))
+
 
 const reply_click = function(name,id){
     sessionStorage.setItem(name,id);
 };
 
 
-const loadorders = async function () {
-    let response = await fetch('/api/order');
+const loadorders = async function (id) {
+    let response = await fetch('/api/user/command/'+id);
     let orders = await response.json();
             
     let section = document.querySelector('main section');
@@ -262,7 +262,6 @@ const loadpanier = async function(id_plan,id_plat,id_dessert){
         let valider = document.querySelector('footer');
         valider.style.visibility = "hidden";
 
-
     }
     else{
         let response = await fetch('/api/plan/'+id_plan);
@@ -300,13 +299,47 @@ const loadpanier = async function(id_plan,id_plat,id_dessert){
 
         let valider = document.querySelector('footer');
         valider.style.visibility = "visible";
+
+        
+        let button = document.getElementById("valider");
+        button.addEventListener('click', _=>{
+            console.log(2);
+            let heure = document.getElementById("heure");
+            let minute = document.getElementById("minute");
+            console.log(minute.value.length,minute.value);
+            if (minute.value.length != 2 || heure.value.length !=2){
+                alert("vous n'avez pas selectionner d'heure (pensez à mettre des 0 , par exemple 07h08)");
+            }
+            else if( Number(minute.value)>=60 || Number(minute.value)<0 || Number(heure.value)>=24 || Number(heure.value)<0){
+                alert("l'heure selectionner n'est pas valide");
+            }
+            else{
+                //post
+                window.location.href = "app.html";
+            }
+        });
+
+        let poubelle = document.getElementById("poubelle")
+        poubelle.addEventListener("click", _=>{
+            if ( confirm( "voulez-vous supprimer ce menu" )) {
+                sessionStorage.setItem("plan",null);
+                sessionStorage.setItem("plat",null);
+                sessionStorage.setItem("dessert",null);
+                document.location.reload();
+            }
+            else{
+
+            }
+
+        });
+
     }
     
 }
 
 
 if (window.location.href=='http://localhost:8080/private/app.html'){
-    loadorders();
+    loadorders(sessionStorage.getItem("user"));
 }
 else if(window.location.href=='http://localhost:8080/private/recu.html'){
     loadorder(sessionStorage.getItem("order"));

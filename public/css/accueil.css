@@ -15,7 +15,8 @@ body{
     text-align: center;
 }
 header{
-    height: 20%
+    height: 20%;
+    margin-bottom :20px;
 }
 main{
     height: 60%

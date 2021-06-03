@@ -39,7 +39,7 @@ const all = sql => new Promise(function (resolve, reject) {
 });
 
 const remove = sql => new Promise(function (resolve, reject) {
-    db.delete(sql, function (err, row) {
+    db.run(sql, function (err, row) {
         if (err) {
             reject(err);
         }
@@ -50,7 +50,7 @@ const remove = sql => new Promise(function (resolve, reject) {
 });
 
 const post = sql => new Promise(function (resolve, reject) {
-    db.post(sql, function (err, row) {
+    db.run(sql, function (err, row) {
         if (err) {
             reject(err);
         }
@@ -61,7 +61,7 @@ const post = sql => new Promise(function (resolve, reject) {
 });
 
 const put = sql => new Promise(function (resolve, reject) {
-    db.put(sql, function (err, row) {
+    db.run(sql, function (err, row) {
         if (err) {
             reject(err);
         }
@@ -84,24 +84,11 @@ module.exports.user = {
             where ID_User = "${email}"
             `),
 
-    a: Promise.resolve({
-        ID_User: 0,
-        checkPassword: (/*password*/) => true,
-    }),
-
     all: () => all('select * from Users'),
 
     insert : (email,password)=> post(`
-        insert into Users (ID_User,password,Isstaff) values(${email},${password},0);
+        insert into Users (ID_User,password,Isstaff) values("${email}","${password}",0);
             `),
-    command : (email)=>get(`
-        select plans, meals ,price ,creation_time ,collecting_time, status
-            from Orders, Users
-                where Orders.ID_User = Users.ID_User
-                    and Users.ID_User = '${email}'
-        insert into Users (ID_User,password,Isstaff) values(${email},${password},0)
-            `),
-
     command : (email)=>all(`
         select * from Orders
             where ID_User = '${email}'

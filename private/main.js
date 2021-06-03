@@ -11,6 +11,8 @@ const reply_click = function(name,id){
 const loadorders = async function (id) {
     let response = await fetch('/api/user/command/'+id);
     let orders = await response.json();
+
+    console.log(orders);
             
     let section = document.querySelector('main section');
     for ( let i = 0; i < orders.length; i = i + 1){ // pour chaque order
@@ -334,7 +336,6 @@ const loadpanier = async function(id_plan,id_plat,id_dessert){
         });
 
     }
-    
 }
 
 

@@ -10,17 +10,21 @@ const express = require('express');
 // Notre module nodejs d'accès simplifié à la base de données
 const dbHelper = require('./dbhelper.js');
 const app = express();
+var bodyParser = require("body-parser");
 
 module.exports = (passport) => {
 
     /* post */
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: false }));
 
-    app.post('createaccount/:email/:password', function (req, res, next) {
-        dbHelper.user.insert(req.params.email, req.params.password).then(
-            users => {
-                console.log('creation compte');
+
+
+    app.post('/createaccount', function (req, res, next) {
+        dbHelper.user.insert(req.body.email,req.body.password).then(
+            user => {
                 res.set('Content-type', 'application/json');
-                res.send(JSON.stringify(users));
+                res.send(JSON.stringify(user));
             },
             err => {
                 next(err);

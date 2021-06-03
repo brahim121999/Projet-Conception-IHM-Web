@@ -25,34 +25,22 @@ app.use('/', express.static('public'));
 app.use('/public',
     express.static('public')
 );
-
 app.use('/private',
     require('connect-ensure-login').ensureLoggedIn(),
     express.static('private')
 );
 app.post('/login',
-    passport.authenticate('local', {
-        failureRedirect: '/index.html'
-    }),
+    passport.authenticate('local', { failureRedirect: '/index.html' }),
     function (req, res) {
         res.redirect('/private/app.html');
     }
 );
 
-
-// app.post('/register',
-//     passport.('/api/user/createaccount', { failureRedirect: '/nvx_compte.html' }),
-//     function (req, res) {
-//         res.redirect('index.html');
-//     }
-// );
 // Pour toutes les autres url (catch all) on renverra l'index.html
 // c'est le routeur coté client qui fera alors le routing
-// app.use(function (req, res) {
-//     res.sendFile('public/index.html', {
-//         'root': __dirname
-//     });
-// });
+app.use(function (req, res) {
+    res.sendFile('public/index.html', { 'root': __dirname });
+});
 
 // Lancement du serveur web
 var port = 'PORT' in process.env ? process.env.PORT : 8080;

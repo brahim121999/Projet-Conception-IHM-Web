@@ -339,8 +339,9 @@ const loadpanier = async function(id_plan,id_plat,id_dessert){
                         body: JSON.stringify({"ID_User": user,"ID_Plan": Number(idplan),"price": plan.price,"creation_time":date,"collecting_time":horaire,"status":0}),
                         headers: { "Content-Type": "application/json" }
                     });
+                    // chercher l'id de ca pour creer order_meal
                 }
-                //window.location.href = "app.html";
+                window.location.href = "app.html";
             }
         });
 

@@ -41,7 +41,13 @@ h2{
 
 
 /*main*/
-.menu{
+section{
+    margin-bottom :10px;
+}
+#nomenu{
+    visibility: hidden;
+}
+#menu{
     position :relative;
     margin:auto;
     border-radius: 20px;
@@ -61,7 +67,7 @@ h2{
 h3{
     font-size : 25px;
 }
-.price{
+#price{
     position : absolute;
     bottom : 0;
     right : 10px;

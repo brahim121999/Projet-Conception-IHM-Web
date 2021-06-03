@@ -229,7 +229,6 @@ const loadmenu = async function(id){
     firstplat.textContent = plat1.Name;
     let bplat1 = document.getElementById('bplat1');
     bplat1.value = plat1.ID_Meal;
-    sessionStorage.setItem("plat",plat1.ID_Meal)
 
     let secondplat = document.getElementById('plat2');
     secondplat.textContent = plat2.Name;
@@ -240,7 +239,6 @@ const loadmenu = async function(id){
     firstdessert.textContent = dessert1.Name;
     let bdessert1 = document.getElementById('bdessert1');
     bdessert1.value = dessert1.ID_Meal;
-    sessionStorage.setItem("dessert",dessert1.ID_Meal)
 
     let seconddessert = document.getElementById('dessert2');
     seconddessert.textContent = dessert2.Name;
@@ -248,6 +246,63 @@ const loadmenu = async function(id){
     bdessert2.value = dessert2.ID_Meal;
 
 };
+
+const loadpanier = async function(id_plan,id_plat,id_dessert){
+
+    if (id_plan === "null" || id_plat === "null" || id_dessert === "null"){
+        let retrait = document.getElementById('retrait');
+        retrait.style.visibility = "hidden";
+
+        let menus = document.getElementById('menus');
+        menus.style.visibility = "hidden";
+
+        let nomenu = document.getElementById('nomenu');
+        nomenu.style.visibility = "visible";
+
+        let valider = document.querySelector('footer');
+        valider.style.visibility = "hidden";
+
+
+    }
+    else{
+        let response = await fetch('/api/plan/'+id_plan);
+        let plan = await response.json();
+
+        let responseplat = await fetch('/api/meal/'+id_plat);
+        let plat = await responseplat.json();
+
+        let responsedessert = await fetch('/api/meal/'+id_dessert);
+        let dessert = await responsedessert.json();
+
+        let h3 = document.getElementById('menuname')
+        h3.textContent = plan.Name;
+
+        let divplat = document.getElementById('plat');
+        divplat.textContent = plat.Name;
+
+        let divdessert = document.getElementById('dessert');
+        divdessert.textContent = dessert.Name;
+
+        let divprice = document.getElementById('price');
+        divprice.textContent = plan.price + "€";
+
+        let total = document.getElementById('total');
+        total.textContent = "total = " + plan.price + "€";
+
+        let retrait = document.getElementById('retrait');
+        retrait.style.visibility = "visible";
+
+        let menus = document.getElementById('menus');
+        menus.style.visibility = "visible";
+
+        let nomenu = document.getElementById('nomenu');
+        nomenu.style.visibility = "hidden";
+
+        let valider = document.querySelector('footer');
+        valider.style.visibility = "visible";
+    }
+    
+}
 
 
 if (window.location.href=='http://localhost:8080/private/app.html'){
@@ -264,3 +319,8 @@ else if(window.location.href=='http://localhost:8080/private/selection_plat.html
 
     loadmenu(sessionStorage.getItem("plan"));
 }
+else if(window.location.href=='http://localhost:8080/private/panier.html'){
+
+    loadpanier(sessionStorage.getItem("plan"),sessionStorage.getItem("plat"),sessionStorage.getItem("dessert"));
+}
+

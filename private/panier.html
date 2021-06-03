@@ -45,9 +45,12 @@
         <h2>votre panier</h2>
     </header>
     <main>
+        <section id = "nomenu">
+            <h3>Vous n'avez pas<br/> selectionner de menu</h3>
+        </section>
         <section id = "menus">
-            <article class = "menu">
-                <h3>Menu fast</h3>
+            <article id = "menu">
+                <h3 id = "menuname">Menu fast</h3>
                 <img src="./images/poubelle.png" id="poubelle">
                 <div class="plat">
                     1 jambon beurre <br>
@@ -55,6 +58,14 @@
                 </div>
                 <p class="price">
                     Prix : 7€
+                <div id="plat">
+                    1 pizza
+                </div>
+                <div id = "dessert">
+                    1 cookie
+                </div>
+                <p id ="price">
+                    Prix : 3€
                 </p>
             </article>
             <article id="total">
@@ -66,12 +77,12 @@
                 Horaire de retrait :
             </p>
             <div>
-                <input type="text" maxlength="2" minlength="2" placeholder="23"> : <input type="text" maxlength="2" minlength="2" placeholder="59">
+                <input id="heure" type="text" maxlength="2" minlength="2" placeholder="23"> : <input type="text" id="minute" maxlength="2" minlength="2" placeholder="59">
             </div>
         </section>
     </main>
     <footer>
-        <a href = "app.html"><button id="valider">valider la commande</button></a>
+        <button id="valider">valider la commande</button>
     </footer>
 </body>
 

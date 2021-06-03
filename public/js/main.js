@@ -16,17 +16,22 @@ if (window.location.href=='http://localhost:8080/index.html'|| window.location.h
     });
 
     let account = document.getElementById("account");
-    account.textContent = "allo?";
     account.addEventListener('click', async function() {
+        
         let email = document.getElementById("n1");
         let password = document.getElementById("n2");
-        console.log(email.value,password.value);
-        fetch('/api/createaccount' ,
+        if(email.value === "" || password.value === ""){
+            alert ("vous n'avez pas rempli le mot de passe et/ou votre adresse mail");
+        }
+        else{
+            fetch('/api/createaccount',
             {
                 method: "POST",
                 body: JSON.stringify({"email": email.value,"password":password.value}),
                 headers: { "Content-Type": "application/json" }
-            })
+            });
+            alert("votre compte a été créé");
+        }
     });
 
     

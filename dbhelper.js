@@ -101,9 +101,9 @@ module.exports.user = {
 // dbhelper.order.select, qui récupère tous les ordres avec un tel id
 
 module.exports.order = {
-    insert: (ID_order,user,plan,price,creation_time,collecting_time,status) => post(`
-        INSERT INTO Orders 
-            VALUES(${ID_order},${user},${plan},${price},${creation_time},${collecting_time},${status})
+    insert: (ID_User,ID_Plan,price,creation_time,collecting_time,status) => post(`
+        INSERT INTO Orders (ID_User,ID_Plan,price,creation_time,collecting_time,status)
+            VALUES("${ID_User}",${ID_Plan},${price},"${creation_time}","${collecting_time}",${status})
             `),
     all: () => all('select * from Orders'),
     select : (ID_order)=> get(`

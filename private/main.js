@@ -316,8 +316,31 @@ const loadpanier = async function(id_plan,id_plat,id_dessert){
                 alert("l'heure selectionner n'est pas valide");
             }
             else{
-                //post
-                window.location.href = "app.html";
+                let user = sessionStorage.getItem("user");
+                let idplan = sessionStorage.getItem("plan");
+                let horaire = heure.value + ":" + minute.value;
+                if(  user !== "null" && plan !== "null" ){
+                    let today = new Date();
+                    
+                    let month = (today.getMonth()+1);
+                    if(month<10){
+                        month = '0'+month;
+                    }
+
+                    let day = today.getDate();
+                    if(day<10){
+                        day = '0'+day;
+                    }
+                    let date = today.getFullYear()+'-'+month+'-'+day
+                    fetch('/api/order/post',
+                    {
+                        method: "POST",
+                        /*ID_User,ID_Plan,price,creation_time,collecting_time,status*/
+                        body: JSON.stringify({"ID_User": user,"ID_Plan": Number(idplan),"price": plan.price,"creation_time":date,"collecting_time":horaire,"status":0}),
+                        headers: { "Content-Type": "application/json" }
+                    });
+                }
+                //window.location.href = "app.html";
             }
         });
 

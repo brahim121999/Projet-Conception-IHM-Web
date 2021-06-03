@@ -98,9 +98,11 @@ module.exports = (passport) => {
     });
 
 
-    /* post order
-    app.post('/api/order', function (req, res, next) {
-        dbHelper.order.select(req.params.id).then(
+    /* post order*/
+    app.post('/order/post', function (req, res, next) {
+        console.log(req.body);
+        console.log(req.body.ID_User,req.body.ID_Plan,req.body.price,req.body.creation_time,req.body.collecting_time,req.body.status);
+        dbHelper.order.select(req.body.ID_User,req.body.ID_Plan,req.body.price,req.body.creation_time,req.body.collecting_time,req.body.status).then(
             order => {
                 res.set('Content-type', 'application/json');
                 res.send(JSON.stringify(order));
@@ -110,7 +112,6 @@ module.exports = (passport) => {
             },
         );
     });
-    */
 
     app.get('/order/:id', function (req, res, next) {
         dbHelper.order.select(Number(req.params.id)).then(

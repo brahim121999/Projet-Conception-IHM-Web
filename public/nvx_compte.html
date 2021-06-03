@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<!-- Notre page est en français -->
+
+<head>
+  <!-- Il est obligatoire de préciser un encodage de caractères et un titre pour la page -->
+  <meta charset="utf-8">
+  <!-- Pour le responsive sur mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Accueil</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Déclaration de la feuille de style du document-->
+  <link rel="stylesheet" href="css/accueil.css">
+  <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Polyfills pour le support de fetch dans les vieux navigateurs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.0.5/es6-promise.min.js" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.1/fetch.min.js" async></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"
+    defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"
+    defer></script> -->
+  <!-- Mustache ! -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js" async></script>
+  <!-- Page.js for client side routing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.11.4/page.min.js" defer></script>
+  <!-- Notre script principal -->
+  <script src="js/main.js" defer></script>
+
+
+<body>
+  <header>
+    <img id="pizza" src="images/pizza.png" alt="pizza">
+    <h1 class="big">POLYKFÈT'</h1>
+  </header>
+
+  <main>
+    <section>
+      <article id="description">
+        <p>
+          Veuillez choisir une adresse mail et un mot de passe
+        </p>
+      </article>
+      <article id="register">
+        <form class="mt-8 space-y-6" action="user/createaccount" method="POST">
+          <input id="n1" type="email" name="email" placeholder="identitfiant(Email université)" /><br />
+          <input id="n2" type="password" name="password" placeholder="Mot de Passe" /><br />
+          <button type="submit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+            Créer compte
+          </button>
+        </form>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <a href="">Comment l'utiliser ?</a><br />
+    <img id="univ" src="./images/univ.png" alt="logouniv">
+
+  </footer>
+</body>
+
+</html>

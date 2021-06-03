@@ -231,5 +231,37 @@ module.exports = (passport) => {
             },
         );
     });
+
+
+
+
+
+    app.get('/ordermeals/:id', function (req, res, next) {
+        dbHelper.ordermeals.select(req.params.id).then(
+            meal => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(meal));
+            },
+            err => {
+                next(err);
+            },
+        );
+    });
+
+
+    app.get('/planmeals/:id', function (req, res, next) {
+        dbHelper.planmeals.select(req.params.id).then(
+            meal => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(meal));
+            },
+            err => {
+                next(err);
+            },
+        );
+    });
+
+
+
     return app;
 }

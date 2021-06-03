@@ -3,6 +3,8 @@ drop table if exists Meals;
 drop table if exists Plans;
 drop table if exists Orders;
 drop table if exists QR_codes;
+drop table if exists Plan_Meals;
+drop table if exists Order_Meals;
 
 
 
@@ -11,7 +13,7 @@ drop table if exists QR_codes;
 --
 
 create table if not exists Meals (
-    ID_Meal integer primary key,
+    ID_Meal integer not null primary key,
     Name text not null,
     description text not null,
     stock integer,
@@ -24,13 +26,42 @@ create table if not exists Meals (
 --
 
 create table if not exists Plans (
-    ID_Plan integer ,
-    ID_Meal integer,
+    ID_Plan integer primary key,
     Name text not null,
     description text not null,
-    price real,
-    FOREIGN KEY(ID_Meal) REFERENCES Meals(ID_Meal),
-    PRIMARY KEY (ID_Plan, ID_Meal)
+    price real
+);
+
+--
+-- Plan_Meals
+--
+
+create table if not exists Plan_Meals (
+    ID_Plan integer,
+    Plat1 integer,
+    Plat2 integer,
+    Dessert1 integer,
+    Dessert2 integer,
+    FOREIGN KEY(ID_Plan) REFERENCES Plans(ID_Plan),
+    FOREIGN KEY(Plat1) REFERENCES Meals(ID_Meal),
+    FOREIGN KEY(Plat2) REFERENCES Meals(ID_Meal),
+    FOREIGN KEY(Dessert1) REFERENCES Meals(ID_Meal),
+    FOREIGN KEY(Dessert2) REFERENCES Meals(ID_Meal),
+    PRIMARY KEY (ID_Plan)
+);
+
+--
+-- Order_Meals
+--
+
+create table if not exists Order_Meals (
+    ID_Order integer,
+    Plat integer,
+    Dessert integer,
+    FOREIGN KEY(ID_Order) REFERENCES Orders(ID_Order),
+    FOREIGN KEY(Plat) REFERENCES Meals(ID_Meal),
+    FOREIGN KEY(Dessert) REFERENCES Meals(ID_Meal),
+    primary key (ID_Order)
 );
 
 --
@@ -77,13 +108,17 @@ create table if not exists QR_codes (
 insert into Users (ID_User,password, Isstaff) values ('rabadan.felix@gmail.com','qwerty',0);
 insert into Users (ID_User,password, Isstaff) values ('rocheteau.axel@gmail.com','azerty',0);
 
-insert into Meals (ID_Meal,Name,description,stock,type,hot) values(1,'pudding','gateau alcoolisé',3,'type',0);
-insert into Meals (ID_Meal,Name,description,stock,type,hot) values(2,'jambon beurre','sandwich baguette',154,'type',0);
+insert into Meals (ID_Meal,Name,description,stock,type,hot) values(1,'compote','compote au fruit',3,'type',0);
+insert into Meals (ID_Meal,Name,description,stock,type,hot) values(2,'donut','gateau',3,'type',0);
+insert into Meals (ID_Meal,Name,description,stock,type,hot) values(3,'jambon beurre','sandwich baguette',154,'type',0);
+insert into Meals (ID_Meal,Name,description,stock,type,hot) values(4,'fromage crudité','sandwich baguette',154,'type',0);
 
-insert into Plans (ID_plan,ID_Meal,Name,description,price) values (1,1,'low cost etu','all low cost things',8.50);
-insert into Plans (ID_plan,ID_Meal,Name,description,price) values (1,2,'low cost etu','all low cost things',8.50);
+insert into Plans (ID_plan,Name,description,price) values (1,'low cost etu','all low cost things',8.50);
+
+insert into Plan_Meals (ID_Plan,Plat1,Plat2,Dessert1,Dessert2) values (1,1,2,3,4);
+
+insert into Order_Meals (ID_Order,Plat,Dessert) values(1,3,2);
+insert into Order_Meals (ID_Order,Plat,Dessert) values(2,4,1);
 
 insert into Orders (ID_Order, ID_User, ID_Plan,price,creation_time,collecting_time,status) values (1,'rabadan.felix@gmail.com',1,3.54,'2021-05-31','15:40',1);
 insert into Orders (ID_Order, ID_User, ID_Plan,price,creation_time,collecting_time,status) values (2,'rabadan.felix@gmail.com',1,4.50,'2021-05-31','16:40',1);
-insert into Orders (ID_Order, ID_User, ID_Plan,price,creation_time,collecting_time,status) values (3,'rabadan.felix@gmail.com',1,3.54,'2021-05-31','15:40',1);
-insert into Orders (ID_Order, ID_User, ID_Plan,price,creation_time,collecting_time,status) values (4,'rabadan.felix@gmail.com',1,4.50,'2021-05-31','16:40',1);

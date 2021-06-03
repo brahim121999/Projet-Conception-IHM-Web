@@ -61,9 +61,26 @@ const loadorders = async function () {
 };
 
 const loadorder = async function(idorder){
-    let response = await fetch('/api/order/'+ idorder);
-    let order = await response.json();
+    // fetch
+    console.log(idorder);
+    let responseorder = await fetch('/api/order/'+ idorder);
+    let order = await responseorder.json();
 
+    let responseordermeal = await fetch('/api/ordermeals/'+idorder);
+    let ordermeal = await responseordermeal.json();
+
+    let responseplat = await fetch('/api/meal/'+ordermeal.Plat);
+    let plat = responseplat = await responseplat.json();
+
+    let responsedessert = await fetch('/api/meal/'+ordermeal.Dessert);
+    let dessert = await responsedessert.json();
+
+    let responseplan = await fetch('/api/plan/'+order.ID_Plan);
+    let plan = await responseplan.json();
+
+
+
+    // order
     let h3 = document.querySelector('main h3');
     h3.textContent = order.creation_time + ' a ' + order.collecting_time
 
@@ -78,6 +95,23 @@ const loadorder = async function(idorder){
     }
     let prixfin = document.getElementById('prix_fin');
     prixfin.textContent = order.price + '€';
+
+    let prix = document.getElementById('prix');
+    prix.textContent = order.price + '€';
+
+
+    //plat
+    let docplat = document.getElementById('plat');
+    docplat.textContent = '- 1' +  plat.Name;
+
+    // dessert
+    let docdessert = document.getElementById('dessert');
+    docdessert.textContent = '- 1' +  dessert.Name;
+
+    // menu name
+    let menuname = document.getElementById('menuname');
+    menuname.textContent = plan.Name;
+
 
 }
 

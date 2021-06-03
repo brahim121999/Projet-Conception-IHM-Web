@@ -91,11 +91,11 @@ module.exports.user = {
 
     all: () => all('select * from Users'),
 
-    insert : ({email,password,isstaff})=> post(`
+    insert : (email,password,isstaff)=> post(`
         insert into Users values(${email},${password},${isstaff});
             `),
 
-    command : ({email})=>get(`
+    command : (email)=>get(`
         select plans, meals ,price ,creation_time ,collecting_time, status
             from Orders, Users
                 where Orders.ID_User = Users.ID_User
@@ -109,9 +109,9 @@ module.exports.user = {
 // dbhelper.order.select, qui récupère tous les ordres avec un tel id
 
 module.exports.order = {
-    insert: ({ID_order,user,plan,meal,price,creation_time,collecting_time,status}) => post(`
+    insert: (ID_order,user,plan,price,creation_time,collecting_time,status) => post(`
         INSERT INTO Orders 
-            VALUES(${ID_order},${user},${plan},${meal},${price},${creation_time},${collecting_time},${status})
+            VALUES(${ID_order},${user},${plan},${price},${creation_time},${collecting_time},${status})
             `),
     all: () => all('select * from Orders'),
     select : (ID_order)=> get(`
@@ -128,11 +128,11 @@ module.exports.order = {
 // dbhelper.order.select, qui récupère tous les qrcode avec un tel id
 
 module.exports.qrcode = {
-    insert: ({ID_QRcode,ID_plan}) => post(`
+    insert: (ID_QRcode,ID_plan) => post(`
         INSERT INTO QR_codes 
             VALUES(${ID_QRcode},${ID_plan})
             `),
-    select : ({ID_QRcode}) => all(`
+    select : (ID_QRcode) => all(`
         select * from QR_codes where ID_QRcode = ${ID_QRcode}
             `)
 };
@@ -144,22 +144,22 @@ module.exports.qrcode = {
 // dbhelper.plan.update, qui met a jour un plan
 
 module.exports.plan = {
-    insert: ({ID_plan,meal,name,description,price}) => post(`
+    insert: (ID_plan,name,description,price) => post(`
         INSERT INTO Plans 
-            VALUES(${ID_plan},${meal},${name},${description},${price})
+            VALUES(${ID_plan},${name},${description},${price})
             `),
-    delete : ({ID_plan}) => remove(`
+    delete : (ID_plan) => remove(`
         DELETE FROM Plans 
             WHERE ID_Plan = ${ID_plan}
             `),
-    update : ({ID_plan,ID_Meal,new_meal,new_name,new_desc,new_price}) => put(`
+    update : (ID_plan,ID_Meal,new_meal,new_name,new_desc,new_price) => put(`
         DELETE FROM Plans
             WHERE ID_Plan = ${ID_plan} and ID_Meal = ${ID_Meal}
 
         INSERT INTO Plans 
             VALUES(${ID_plan},${new_meal},${new_name},${new_desc},${new_price})
             `),
-    select : ({ID_plan}) => all(`
+    select : (ID_plan) => all(`
         select * from Plans where ID_Plan = ${ID_plan}
             `)
 };
@@ -171,22 +171,53 @@ module.exports.plan = {
 // dbhelper.meal.update, qui met a jour un meal
 
 module.exports.meal = {
-    insert : ({ID_meal,name,description,stock,type,hot}) => post(`
+    insert : (ID_meal,name,description,stock,type,hot) => post(`
         INSERT INTO Meals 
             VALUES(${ID_meal},${name},${description},${stock},${type},${hot})
             `),
-    delete : ({ID_meal}) => remove(`
+    delete : (ID_meal) => remove(`
         DELETE FROM Meals
             WHERE ID_Meal = ${ID_meal}
             `),
-    update : ({ID_Meal,new_name,new_desc,new_stock,new_price,new_hot}) => put(`
+    update : (ID_Meal,new_name,new_desc,new_stock,new_price,new_hot) => put(`
         UPDATE Meals SET
             Name = ${new_name}, description = ${new_desc}, stock = ${new_stock}
                 price = ${new_price}, hot = ${new_hot}
                     WHERE ID_Meal = ${ID_Meal}
             `),
-    select : ({ID_meal}) => get(`
+    select : (ID_meal) => get(`
         SELECT * FROM Meals
             WHERE ID_Meal = ${ID_meal}
             `)
 }
+
+module.exports.planmeals = {
+    insert: (ID_Plan,Plat1,Plat2,Dessert1,Dessert2) => post(`
+        INSERT INTO Plan_Meals 
+            VALUES(${ID_Plan},${Plat1},${Plat2},${Dessert1},${Dessert2})
+            `),
+    all: () => all('select * from Plan_Meals'),
+    select : (ID_Plan)=> get(`
+        select * from Plan_Meals where ID_Order = ${ID_Plan}
+            `),
+    delete : (ID_Plan) => remove(`
+            DELETE FROM Plan_Meals 
+                WHERE ID_Order = ${ID_Order}
+                `)
+};
+
+module.exports.ordermeals = {
+    insert: (ID_order,Plat,Dessert) => post(`
+        INSERT INTO Order_Meals 
+            VALUES(${ID_order},${Plat},${Dessert})
+            `),
+    all: () => all('select * from Order_Meals'),
+    select : (ID_order)=> get(`
+        select * from Order_Meals where ID_Order = ${ID_order}
+            `),
+    delete : (ID_Order) => remove(`
+            DELETE FROM Order_Meals 
+                WHERE ID_Order = ${ID_Order}
+                `)
+};
+

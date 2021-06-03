@@ -70,7 +70,7 @@ const loadorder = async function(idorder){
     let ordermeal = await responseordermeal.json();
 
     let responseplat = await fetch('/api/meal/'+ordermeal.Plat);
-    let plat = responseplat = await responseplat.json();
+    let plat = await responseplat.json();
 
     let responsedessert = await fetch('/api/meal/'+ordermeal.Dessert);
     let dessert = await responsedessert.json();
@@ -102,18 +102,81 @@ const loadorder = async function(idorder){
 
     //plat
     let docplat = document.getElementById('plat');
-    docplat.textContent = '- 1' +  plat.Name;
+    docplat.textContent = '- 1 ' +  plat.Name;
 
     // dessert
     let docdessert = document.getElementById('dessert');
-    docdessert.textContent = '- 1' +  dessert.Name;
+    docdessert.textContent = '- 1 ' +  dessert.Name;
 
     // menu name
     let menuname = document.getElementById('menuname');
     menuname.textContent = plan.Name;
 
+};
 
-}
+const loadmenus = async function(){
+    let response = await fetch('/api/plan');
+    let plans = await response.json();
+
+    console.log(plans);
+
+    let section = document.querySelector('main section');
+    for ( let i = 0; i < plans.length; i = i + 1){ // pour chaque plan
+        //creation article
+        let article = document.createElement('article');
+        
+        let h3 = document.createElement('h3');
+        h3.textContent = plans[i].Name
+
+        let responseplanmeal = await fetch('/api/planmeals/'+plans[i].ID_Plan);
+        let planmeal = await responseplanmeal.json();
+
+        let responseplat1 = await fetch('/api/meal/'+planmeal.Plat1);
+        let plat1 = await responseplat1.json();
+
+        let responsedessert1 = await fetch('/api/meal/'+planmeal.Dessert1);
+        let dessert1 = await responsedessert1.json();
+
+        let responseplat2 = await fetch('/api/meal/'+planmeal.Plat2);
+        let plat2 = await responseplat2.json();
+
+        let responsedessert2 = await fetch('/api/meal/'+planmeal.Dessert2);
+        let dessert2 = await responsedessert2.json();
+
+        let div = document.createElement('div');
+        div.setAttribute('class','plat');
+
+        let p1 = document.createElement('p');
+        p1.textContent = plat1.Name + " ou " + plat2.Name
+
+        let p2 = document.createElement('p');
+        p2.textContent =  " + "
+
+        let p3 = document.createElement('p');
+        p3.textContent = dessert1.Name + " ou " + dessert2.Name;
+
+        div.appendChild(p3);
+        div.appendChild(p2);
+        div.appendChild(p1);
+        
+        let p = document.createElement('p');
+        p.setAttribute('class','price');
+        p.textContent = plans[i].price + "€";
+
+        let a = document.createElement('a');
+        a.setAttribute('href','selection_plat.html');
+        let button = document.createElement('button');
+        button.textContent = "selectionner";
+        button.setAttribute('class','select');
+
+        a.appendChild(button);
+        article.appendChild(h3);
+        article.appendChild(div);
+        article.appendChild(p);
+        article.appendChild(a);
+        section.appendChild(article);
+    }
+};
 
 
 const naviguateapp = function(){
@@ -151,7 +214,12 @@ if (window.location.href=='http://localhost:8080/private/app.html'){
     naviguateapp();
 }
 else if(window.location.href=='http://localhost:8080/private/recu.html'){
-
     loadorder(sessionStorage.getItem("order"));
     naviguaterecu();
+}
+else if(window.location.href=='http://localhost:8080/private/selection_menu.html'){
+    loadmenus();
+}
+else{
+
 }

@@ -185,6 +185,18 @@ module.exports = (passport) => {
         );
     });
 
+    app.get('/plan', function (req, res, next) {
+        dbHelper.plan.all().then(
+            plans => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(plans));
+            },
+            err => {
+                next(err);
+            },
+        );
+    });
+
     /* post meal
     app.post('/api/meal', function (req, res, next) {
         dbHelper.order.insert(req.params.id).then(
@@ -260,7 +272,6 @@ module.exports = (passport) => {
             },
         );
     });
-
 
 
     return app;

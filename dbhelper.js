@@ -159,9 +159,10 @@ module.exports.plan = {
         INSERT INTO Plans 
             VALUES(${ID_plan},${new_meal},${new_name},${new_desc},${new_price})
             `),
-    select : (ID_plan) => all(`
+    select : (ID_plan) => get(`
         select * from Plans where ID_Plan = ${ID_plan}
-            `)
+            `),
+    all : () => all('select * from Plans')
 };
 
 // Cet export met à disposition des programmeurs 4 fonctions
@@ -198,7 +199,7 @@ module.exports.planmeals = {
             `),
     all: () => all('select * from Plan_Meals'),
     select : (ID_Plan)=> get(`
-        select * from Plan_Meals where ID_Order = ${ID_Plan}
+        select * from Plan_Meals where ID_Plan = ${ID_Plan}
             `),
     delete : (ID_Plan) => remove(`
             DELETE FROM Plan_Meals 

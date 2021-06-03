@@ -1,13 +1,11 @@
 'use strict';
 
-
+console.log(sessionStorage.getItem("plat"))
+console.log(sessionStorage.getItem("dessert"))
 
 const reply_click = function(name,id){
     sessionStorage.setItem(name,id);
 };
-
-console.log(sessionStorage.getItem("plan"));
-console.log(sessionStorage.getItem("order"))
 
 
 const loadorders = async function () {
@@ -179,9 +177,9 @@ const loadmenus = async function(){
         let p3 = document.createElement('p');
         p3.textContent = dessert1.Name + " ou " + dessert2.Name;
 
-        div.appendChild(p3);
-        div.appendChild(p2);
         div.appendChild(p1);
+        div.appendChild(p2);
+        div.appendChild(p3);
         
         let p = document.createElement('p');
         p.setAttribute('class','price');
@@ -206,6 +204,48 @@ const loadmenus = async function(){
 };
 
 const loadmenu = async function(id){
+    let response = await fetch('/api/plan/'+id);
+    let plan = await response.json();
+
+    let responseplanmeal = await fetch('/api/planmeals/'+id);
+    let planmeal = await responseplanmeal.json();
+
+    let responseplat1 = await fetch('/api/meal/'+planmeal.Plat1);
+    let plat1 = await responseplat1.json();
+
+    let responsedessert1 = await fetch('/api/meal/'+planmeal.Dessert1);
+    let dessert1 = await responsedessert1.json();
+
+    let responseplat2 = await fetch('/api/meal/'+planmeal.Plat2);
+    let plat2 = await responseplat2.json();
+
+    let responsedessert2 = await fetch('/api/meal/'+planmeal.Dessert2);
+    let dessert2 = await responsedessert2.json();
+
+    let h2 = document.querySelector('h2');
+    h2.textContent = plan.Name;
+
+    let firstplat = document.getElementById('plat1');
+    firstplat.textContent = plat1.Name;
+    let bplat1 = document.getElementById('bplat1');
+    bplat1.value = plat1.ID_Meal;
+    sessionStorage.setItem("plat",plat1.ID_Meal)
+
+    let secondplat = document.getElementById('plat2');
+    secondplat.textContent = plat2.Name;
+    let bplat2 = document.getElementById('bplat2');
+    bplat2.value = plat2.ID_Meal;
+
+    let firstdessert = document.getElementById('dessert1');
+    firstdessert.textContent = dessert1.Name;
+    let bdessert1 = document.getElementById('bdessert1');
+    bdessert1.value = dessert1.ID_Meal;
+    sessionStorage.setItem("dessert",dessert1.ID_Meal)
+
+    let seconddessert = document.getElementById('dessert2');
+    seconddessert.textContent = dessert2.Name;
+    let bdessert2 = document.getElementById('bdessert2');
+    bdessert2.value = dessert2.ID_Meal;
 
 };
 
@@ -220,7 +260,7 @@ else if(window.location.href=='http://localhost:8080/private/recu.html'){
 else if(window.location.href=='http://localhost:8080/private/selection_menu.html'){
     loadmenus();
 }
-else if(window.location.href=='http://localhost:8080/private/selection_menu.html'){
+else if(window.location.href=='http://localhost:8080/private/selection_plat.html'){
 
     loadmenu(sessionStorage.getItem("plan"));
 }

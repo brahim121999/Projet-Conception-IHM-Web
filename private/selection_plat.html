@@ -52,35 +52,35 @@
   <main>
     <section>
       <article>
-      <h2>Menu fast</h2>
-      <h3 id="plat">selectionner un plat</h3>
-      <div>
-        <input type="radio" id="plat1" name="plat" value="plat1" checked>
-        <label for="plat1">Plat1</label>
-      </div>
-      
-      <div>
-        <input type="radio" id="plat2" name="plat" value="plat2" checked>
-        <label for="plat2">Plat2</label>
-      </div>
-      
-    </article>
-    <article>
-      <h3 id = dessert>selectionner un dessert</h3>
+        <h2 id = "menu">Menu fast</h2>
+        <h3 id="plat">selectionner un plat</h3>
         <div>
-          <input type="radio" id="dessert1" name="dessert" value="dessert1" checked>
-          <label for="dessert1">Dessert1</label>
+          <input id ="bplat1" type="radio" name="plat" value="plat1" onClick="reply_click('plat',this.value)" checked>
+          <label id="plat1" for="plat1">Plat1</label>
         </div>
-        
+
         <div>
-          <input type="radio" id="dessert2" name="dessert" value="dessert2" checked>
-          <label for="dessert2">Dessert2</label>
+          <input id ="bplat2" type="radio" name="plat" value="plat2" onClick="reply_click('plat',this.value)">
+          <label id="plat2" for="plat2">Plat2</label>
         </div>
-    </article>
+
+      </article>
+      <article>
+        <h3 id=dessert>selectionner un dessert</h3>
+        <div>
+          <input id ="bdessert1" type="radio" name="dessert" value="dessert1"  onClick="reply_click('dessert',this.value)" checked>
+          <label id = "dessert1" for="dessert1">Dessert1</label>
+        </div>
+
+        <div>
+          <input id ="bdessert2" type="radio" name="dessert" value="dessert2" onClick="reply_click('dessert',this.value)">
+          <label id = "dessert2" for="dessert2">Dessert2</label>
+        </div>
+      </article>
     </section>
   </main>
   <footer>
-      <p><input class="bouton" type="button" value="Ajouter au panier" name="B1" ></p>
+    <a href = 'panier.html'><input class="bouton" type="button" value="Ajouter au panier" name="B1"></a>
   </footer>
 </body>
 

@@ -115,7 +115,7 @@ insert into Meals (ID_Meal,Name,description,stock,type,hot) values(4,'fromage cr
 
 insert into Plans (ID_plan,Name,description,price) values (1,'low cost etu','all low cost things',8.50);
 
-insert into Plan_Meals (ID_Plan,Plat1,Plat2,Dessert1,Dessert2) values (1,1,2,3,4);
+insert into Plan_Meals (ID_Plan,Plat1,Plat2,Dessert1,Dessert2) values (1,3,4,1,2);
 
 insert into Order_Meals (ID_Order,Plat,Dessert) values(1,3,2);
 insert into Order_Meals (ID_Order,Plat,Dessert) values(2,4,1);

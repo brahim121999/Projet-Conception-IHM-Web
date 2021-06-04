@@ -74,6 +74,7 @@ const put = sql => new Promise(function (resolve, reject) {
 // dbhelper.user.insert, qui ajoute un étudiant
 //dbhelper.user.command, qui récupère les plats d'un étudiant
 module.exports.user = {
+    //renvoie lid et le password pour un email
     select: (email) => get(`
         select ID_User,password from Users
             where ID_User = "${email}"
@@ -108,7 +109,7 @@ module.exports.order = {
             DELETE FROM Orders 
                 WHERE ID_Order = ${ID_Order}
                 `),
-    find : (ID_User,creation_time) => get(`
+    find: (ID_User, creation_time) => get(`
         select ID_Order from Orders 
             where ID_User = '${ID_User}' and creation_time = '${creation_time}'
                 `)

@@ -111,15 +111,19 @@ const loadorder = async function (idorder) {
 
 const naviguaterecu = function () {
     let annuler = document.getElementById('bouton_annuler');
-    annuler.addEventListener('click', async function() {
+    annuler.addEventListener('click', async function () {
         if (confirm("voulez-vous supprimer cette commande")) {
             let order = sessionStorage.getItem("order");
             order = Number(order);
             if (order) {
-                let resp = await fetch('/api/order/delete/'+ order ,{method : 'DELETE'});
-                let rep = await fetch('/api/ordermeals/delete/'+order,{method : 'DELETE'});
+                let resp = await fetch('/api/order/delete/' + order, {
+                    method: 'DELETE'
+                });
+                let rep = await fetch('/api/ordermeals/delete/' + order, {
+                    method: 'DELETE'
+                });
                 window.location.href = 'http://localhost:8080/private/app.html';
-                
+
             } else {
                 alert("selectionner la commande depuis l'écran des commandes");
                 window.location.href = 'http://localhost:8080/private/app.html';
@@ -310,21 +314,31 @@ const loadpanier = async function (id_plan, id_plat, id_dessert) {
                     let today = new Date();
 
                     let month = (today.getMonth() + 1);
-                    if (month < 10) {month = '0' + month;}
+                    if (month < 10) {
+                        month = '0' + month;
+                    }
 
                     let day = today.getDate();
-                    if (day < 10) {day = '0' + day;}
+                    if (day < 10) {
+                        day = '0' + day;
+                    }
 
-                    let hours =  today.getHours();
-                    if (hours<10){ hours = '0'+hours;}
+                    let hours = today.getHours();
+                    if (hours < 10) {
+                        hours = '0' + hours;
+                    }
 
                     let minutes = today.getMinutes();
-                    if (minutes<10){ minutes = '0'+minutes}
+                    if (minutes < 10) {
+                        minutes = '0' + minutes
+                    }
 
                     let secondes = today.getSeconds();
-                    if (secondes<10){secondes='0'+secondes}
+                    if (secondes < 10) {
+                        secondes = '0' + secondes
+                    }
 
-                    let date = today.getFullYear() + '-' + month + '-' + day +' '+ hours +':'+minutes+':'+secondes;
+                    let date = today.getFullYear() + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + secondes;
                     fetch('/api/order/post', {
                         method: "POST",
                         body: JSON.stringify({
@@ -339,15 +353,15 @@ const loadpanier = async function (id_plan, id_plat, id_dessert) {
                             "Content-Type": "application/json"
                         }
                     });
-                    let response = await fetch('/api/order/'+user+'/'+date);
+                    let response = await fetch('/api/order/' + user + '/' + date);
                     let Order = await response.json();
-                    
+
                     fetch('/api/ordermeals/post', {
                         method: "POST",
                         body: JSON.stringify({
                             "ID_Order": Order.ID_Order,
                             "ID_Plat": Number(sessionStorage.getItem("plat")),
-                            "ID_Dessert":  Number(sessionStorage.getItem("dessert"))
+                            "ID_Dessert": Number(sessionStorage.getItem("dessert"))
                         }),
                         headers: {
                             "Content-Type": "application/json"

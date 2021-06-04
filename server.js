@@ -25,10 +25,13 @@ app.use('/', express.static('public'));
 app.use('/public',
     express.static('public')
 );
+//on vérifie que il est bien connécté pour acceder au dossier private
 app.use('/private',
     require('connect-ensure-login').ensureLoggedIn(),
     express.static('private')
 );
+
+//request post, verif connection puis redirection vers private/app.html si cest bon
 app.post('/login',
     passport.authenticate('local', {
         failureRedirect: '/index.html'

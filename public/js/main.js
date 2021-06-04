@@ -2,7 +2,7 @@
 /* global Mustache, page */
 'use strict';
 
-if (window.location.href == 'http://localhost:8080/index.html' || window.location.href == 'http://localhost:8080/login') {
+if (window.location.href == 'http://localhost:8080/public/index.html' || window.location.href == 'http://localhost:8080/login') {
     sessionStorage.setItem("user", null);
     sessionStorage.setItem("plan", null);
     sessionStorage.setItem("plat", null);
@@ -14,8 +14,9 @@ if (window.location.href == 'http://localhost:8080/index.html' || window.locatio
         let email = document.getElementById("n1");
         sessionStorage.setItem("user", email.value);
     });
-
-    let account = document.getElementById("account");
+}
+else{
+    let account = document.getElementById("validate");
     account.addEventListener('click', async function () {
 
         let email = document.getElementById("n1");
@@ -33,9 +34,7 @@ if (window.location.href == 'http://localhost:8080/index.html' || window.locatio
                     "Content-Type": "application/json"
                 }
             });
-            alert("votre compte a été créé");
+            window.location.href = 'http://localhost:8080/public/index.html';
         }
     });
-
-
 }

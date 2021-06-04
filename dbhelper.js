@@ -107,6 +107,10 @@ module.exports.order = {
     delete: (ID_Order) => remove(`
             DELETE FROM Orders 
                 WHERE ID_Order = ${ID_Order}
+                `),
+    find : (ID_User,creation_time) => get(`
+        select ID_Order from Orders 
+            where ID_User = '${ID_User}' and creation_time = '${creation_time}'
                 `)
 };
 
@@ -196,7 +200,7 @@ module.exports.planmeals = {
 
 module.exports.ordermeals = {
     insert: (ID_order, Plat, Dessert) => post(`
-        INSERT INTO Order_Meals 
+        INSERT INTO Order_Meals (ID_Order,Plat,Dessert)
             VALUES(${ID_order},${Plat},${Dessert})
             `),
     all: () => all('select * from Order_Meals'),

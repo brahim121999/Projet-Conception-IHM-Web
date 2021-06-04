@@ -1,7 +1,5 @@
 'use strict';
 
-console.log(sessionStorage.getItem("user"))
-
 
 const reply_click = function (name, id) {
     sessionStorage.setItem(name, id);
@@ -11,8 +9,6 @@ const reply_click = function (name, id) {
 const loadorders = async function (id) {
     let response = await fetch('/api/user/command/' + id);
     let orders = await response.json();
-
-    console.log(orders);
 
     let section = document.querySelector('main section');
     for (let i = 0; i < orders.length; i = i + 1) { // pour chaque order
@@ -99,7 +95,6 @@ const loadorder = async function (idorder) {
     let prix = document.getElementById('prix');
     prix.textContent = order.price + '€';
 
-
     //plat
     let docplat = document.getElementById('plat');
     docplat.textContent = '- 1 ' + plat.Name;
@@ -116,18 +111,15 @@ const loadorder = async function (idorder) {
 
 const naviguaterecu = function () {
     let annuler = document.getElementById('bouton_annuler');
-    annuler.addEventListener('click', _ => {
+    annuler.addEventListener('click', async function() {
         if (confirm("voulez-vous supprimer cette commande")) {
             let order = sessionStorage.getItem("order");
             order = Number(order);
             if (order) {
-                fetch('api/order/:' + order, {
-                        method: 'DELETE',
-                    })
-                    .then(_ => {
-                        window.location.href = 'http://localhost:8080/private/app.html';
-                        alert("vous avez supprimé la commande");
-                    });
+                let resp = await fetch('/api/order/delete/'+ order ,{method : 'DELETE'});
+                let rep = await fetch('/api/ordermeals/delete/'+order,{method : 'DELETE'});
+                window.location.href = 'http://localhost:8080/private/app.html';
+                
             } else {
                 alert("selectionner la commande depuis l'écran des commandes");
                 window.location.href = 'http://localhost:8080/private/app.html';
@@ -141,7 +133,6 @@ const loadmenus = async function () {
     let response = await fetch('/api/plan');
     let plans = await response.json();
 
-    console.log(plans);
 
     let section = document.querySelector('main section');
     for (let i = 0; i < plans.length; i = i + 1) { // pour chaque plan
@@ -302,11 +293,11 @@ const loadpanier = async function (id_plan, id_plat, id_dessert) {
 
 
         let button = document.getElementById("valider");
-        button.addEventListener('click', _ => {
-            console.log(2);
+        button.addEventListener('click', async function () {
+
             let heure = document.getElementById("heure");
             let minute = document.getElementById("minute");
-            console.log(minute.value.length, minute.value);
+
             if (minute.value.length != 2 || heure.value.length != 2) {
                 alert("vous n'avez pas selectionner d'heure (pensez à mettre des 0 , par exemple 07h08)");
             } else if (Number(minute.value) >= 60 || Number(minute.value) < 0 || Number(heure.value) >= 24 || Number(heure.value) < 0) {
@@ -319,18 +310,23 @@ const loadpanier = async function (id_plan, id_plat, id_dessert) {
                     let today = new Date();
 
                     let month = (today.getMonth() + 1);
-                    if (month < 10) {
-                        month = '0' + month;
-                    }
+                    if (month < 10) {month = '0' + month;}
 
                     let day = today.getDate();
-                    if (day < 10) {
-                        day = '0' + day;
-                    }
-                    let date = today.getFullYear() + '-' + month + '-' + day
+                    if (day < 10) {day = '0' + day;}
+
+                    let hours =  today.getHours();
+                    if (hours<10){ hours = '0'+hours;}
+
+                    let minutes = today.getMinutes();
+                    if (minutes<10){ minutes = '0'+minutes}
+
+                    let secondes = today.getSeconds();
+                    if (secondes<10){secondes='0'+secondes}
+
+                    let date = today.getFullYear() + '-' + month + '-' + day +' '+ hours +':'+minutes+':'+secondes;
                     fetch('/api/order/post', {
                         method: "POST",
-                        /*ID_User,ID_Plan,price,creation_time,collecting_time,status*/
                         body: JSON.stringify({
                             "ID_User": user,
                             "ID_Plan": Number(idplan),
@@ -343,8 +339,26 @@ const loadpanier = async function (id_plan, id_plat, id_dessert) {
                             "Content-Type": "application/json"
                         }
                     });
+                    let response = await fetch('/api/order/'+user+'/'+date);
+                    let Order = await response.json();
+                    
+                    fetch('/api/ordermeals/post', {
+                        method: "POST",
+                        body: JSON.stringify({
+                            "ID_Order": Order.ID_Order,
+                            "ID_Plat": Number(sessionStorage.getItem("plat")),
+                            "ID_Dessert":  Number(sessionStorage.getItem("dessert"))
+                        }),
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    });
+                    sessionStorage.setItem("plan", null);
+                    sessionStorage.setItem("plat", null);
+                    sessionStorage.setItem("dessert", null);
+                    sessionStorage.setItem("order", null);
+                    window.location.href = "app.html";
                 }
-                //window.location.href = "app.html";
             }
         });
 

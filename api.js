@@ -21,7 +21,6 @@ module.exports = (passport) => {
     }));
 
 
-
     app.post('/createaccount', function (req, res, next) {
         dbHelper.user.insert(req.body.email, req.body.password).then(
             user => {
@@ -102,9 +101,7 @@ module.exports = (passport) => {
 
     /* post order*/
     app.post('/order/post', function (req, res, next) {
-        console.log(req.body);
-        console.log(req.body.ID_User, req.body.ID_Plan, req.body.price, req.body.creation_time, req.body.collecting_time, req.body.status);
-        dbHelper.order.select(req.body.ID_User, req.body.ID_Plan, req.body.price, req.body.creation_time, req.body.collecting_time, req.body.status).then(
+        dbHelper.order.insert(req.body.ID_User, req.body.ID_Plan, req.body.price, req.body.creation_time, req.body.collecting_time, req.body.status).then(
             order => {
                 res.set('Content-type', 'application/json');
                 res.send(JSON.stringify(order));
@@ -138,8 +135,21 @@ module.exports = (passport) => {
             }
         );
     });
-    app.delete('/order/:id', function (req, res, next) {
-        dbHelper.order.delete(req.params.id).then(
+
+    app.get('/order/:id/:time',function(req,res,next){
+        dbHelper.order.find(req.params.id,req.params.time).then(
+            order => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(order));
+            },
+            err => {
+                next(err);
+            }
+        );
+    });
+
+    app.delete('/order/delete/:id', function (req, res, next) {
+        dbHelper.order.delete(Number(req.params.id)).then(
             order => {
                 res.set('Content-type', 'application/json');
                 res.send(JSON.stringify(order));
@@ -164,6 +174,7 @@ module.exports = (passport) => {
         );
     });
     */
+   
     app.delete('/plan/:id', function (req, res, next) {
         dbHelper.plan.delete(req.params.id)
     });
@@ -257,10 +268,34 @@ module.exports = (passport) => {
 
 
     app.get('/ordermeals/:id', function (req, res, next) {
-        dbHelper.ordermeals.select(req.params.id).then(
-            meal => {
+        dbHelper.ordermeals.select(Number(req.params.id)).then(
+            ordermeal => {
                 res.set('Content-type', 'application/json');
-                res.send(JSON.stringify(meal));
+                res.send(JSON.stringify(ordermeal));
+            },
+            err => {
+                next(err);
+            },
+        );
+    });
+
+    app.post('/ordermeals/post',function(req,res,next){
+        dbHelper.ordermeals.insert(req.body.ID_Order,req.body.ID_Plat,req.body.ID_Dessert).then(
+            ordermeal => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(ordermeal));
+            },
+            err => {
+                next(err);
+            },
+        );
+    });
+
+    app.delete('/ordermeals/delete/:id', function(req,res,next){
+        dbHelper.ordermeals.delete(req.params.id).then(
+            ordermeal => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(ordermeal));
             },
             err => {
                 next(err);

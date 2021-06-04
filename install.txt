@@ -1,5 +1,0 @@
-npm install
-rajouter ces 3 exe a la racine du projet https://www.sqlite.org/2021/sqlite-tools-win32-x86-3350500.zip
-npm run createDB
-npm start
-

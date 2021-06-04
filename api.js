@@ -10,17 +10,16 @@ const express = require('express');
 // Notre module nodejs d'accès simplifié à la base de données
 const dbHelper = require('./dbhelper.js');
 const app = express();
-var bodyParser = require("body-parser");
+var bodyParser = require("body-parser"); // pour obtenir req.body bien formé
 
 module.exports = (passport) => {
 
-    /* post */
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: false
     }));
 
-
+    //creer un compte
     app.post('/createaccount', function (req, res, next) {
         dbHelper.user.insert(req.body.email, req.body.password).then(
             user => {
@@ -34,7 +33,7 @@ module.exports = (passport) => {
     });
 
 
-    // obtenir 1 etudiant
+    // obtenir 1 utilisateur avec son adresse mail
     app.get('/user/:email', function (req, res, next) {
         dbHelper.user.select(req.params.email).then(
             user => {
@@ -60,6 +59,7 @@ module.exports = (passport) => {
         );
     });
 
+    //obtenir les commandes d'un étudiant
     app.get('/user/command/:email', function (req, res, next) {
         dbHelper.user.command(req.params.email).then(
             user => {
@@ -72,19 +72,20 @@ module.exports = (passport) => {
         );
     });
 
-    /* post qrcode
-    app.post('/api/qrc', function (req, res, next) {
-        dbHelper.order.insert(req.params.id).then(
-            order => {
+    // fonction du qrcode pas implémentée
+    /* 
+    app.post('/qrc/post', function (req, res, next) {
+        dbHelper.qrcode.insert(req.body.ID_Qrcode,req.body.ID_Order).then(
+            qrc => {
                 res.set('Content-type', 'application/json');
-                res.send(JSON.stringify(order));
+                res.send(JSON.stringify(qrc));
             },
             err => {
                 next(err);
             },
         );
     }),
-    */
+    
 
     app.get('/qrc/:id', function (req, res, next) {
         dbHelper.qrcode.select(req.params.id).then(
@@ -97,9 +98,9 @@ module.exports = (passport) => {
             },
         );
     });
+    */
 
-
-    /* post order*/
+    // rajouter une commande
     app.post('/order/post', function (req, res, next) {
         dbHelper.order.insert(req.body.ID_User, req.body.ID_Plan, req.body.price, req.body.creation_time, req.body.collecting_time, req.body.status).then(
             order => {
@@ -112,6 +113,7 @@ module.exports = (passport) => {
         );
     });
 
+    // obtenir les informations d'un commande
     app.get('/order/:id', function (req, res, next) {
         dbHelper.order.select(Number(req.params.id)).then(
             order => {
@@ -124,6 +126,7 @@ module.exports = (passport) => {
         );
     });
 
+    //obtenir toutes les commandes
     app.get('/order', function (req, res, next) {
         dbHelper.order.all().then(
             order => {
@@ -136,6 +139,7 @@ module.exports = (passport) => {
         );
     });
 
+    // trouver l'id d'un order avec l'iduser et la date de creation
     app.get('/order/:id/:time', function (req, res, next) {
         dbHelper.order.find(req.params.id, req.params.time).then(
             order => {
@@ -148,6 +152,7 @@ module.exports = (passport) => {
         );
     });
 
+    // supprimer une commande
     app.delete('/order/delete/:id', function (req, res, next) {
         dbHelper.order.delete(Number(req.params.id)).then(
             order => {
@@ -160,31 +165,40 @@ module.exports = (passport) => {
         );
     });
 
-
-    /* post plan
-    app.post('/api/plan', function (req, res, next) {
-        dbHelper.order.select(req.params.id).then(
-            order => {
+    /* non implémenté
+    // rajouter un menu
+    app.post('/plan/post', function (req, res, next) {
+        dbHelper.plan.insert(req.body.Name,req.body.description,req.body.price).then(
+            plan => {
                 res.set('Content-type', 'application/json');
-                res.send(JSON.stringify(order));
+                res.send(JSON.stringify(plan));
             },
             err => {
                 next(err);
             },
         );
     });
-    */
-
+    
+    // supprimer un menu
     app.delete('/plan/:id', function (req, res, next) {
-        dbHelper.plan.delete(req.params.id)
+        dbHelper.plan.delete(req.params.id).then(
+            plan => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(plan));
+            },
+            err => {
+                next(err);
+            },
+        );
     });
+    
 
-    /* update plan
+    // mettre a jour un menu
     app.put('/api/plan/:id', function (req, res, next) {
         dbHelper.plan.update(req.params.id).then(
-            plans => {
+            plan => {
                 res.set('Content-type', 'application/json');
-                res.send(JSON.stringify(plans));
+                res.send(JSON.stringify(plan));
             },
             err => {
                 next(err);
@@ -193,11 +207,12 @@ module.exports = (passport) => {
     });
     */
 
+    // obtenir les informations d'un menu
     app.get('/plan/:id', function (req, res, next) {
         dbHelper.plan.select(req.params.id).then(
-            plans => {
+            plan => {
                 res.set('Content-type', 'application/json');
-                res.send(JSON.stringify(plans));
+                res.send(JSON.stringify(plan));
             },
             err => {
                 next(err);
@@ -205,6 +220,7 @@ module.exports = (passport) => {
         );
     });
 
+    // obtenir tous les menus
     app.get('/plan', function (req, res, next) {
         dbHelper.plan.all().then(
             plans => {
@@ -217,9 +233,39 @@ module.exports = (passport) => {
         );
     });
 
-    /* post meal
-    app.post('/api/meal', function (req, res, next) {
-        dbHelper.order.insert(req.params.id).then(
+    /* non implémenté
+    // rajouter un plat
+    app.post('/meal/post', function (req, res, next) {
+        dbHelper.meal.insert(req.params.id).then(
+            meal => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(meal));
+            },
+            err => {
+                next(err);
+            },
+        );
+    });
+    
+
+    // supprimer un plat : non implémenté
+    app.delete('/meal/delete/:id', function (req, res, next) {
+        dbHelper.meal.delete(req.params.id).then(
+            meal => {
+                res.set('Content-type', 'application/json');
+                res.send(JSON.stringify(meal));
+            },
+            err => {
+                next(err);
+            }
+        );
+    });
+    
+
+
+    // mettre a jour un plat
+    app.put('/api/meal/:id', function (req, res, next) {
+        dbHelper.meal.insert(req.params.id).then(
             meal => {
                 res.set('Content-type', 'application/json');
                 res.send(JSON.stringify(meal));
@@ -231,26 +277,7 @@ module.exports = (passport) => {
     });
     */
 
-
-    app.delete('/meal/:id', function (req, res, next) {
-        dbHelper.meal.delete(req.params.id)
-    }, );
-
-
-    /*update meal
-    app.put('/api/meal', function (req, res, next) {
-        dbHelper.order.insert(req.params.id).then(
-            meal => {
-                res.set('Content-type', 'application/json');
-                res.send(JSON.stringify(meal));
-            },
-            err => {
-                next(err);
-            },
-        );
-    });
-    */
-
+    //obtenir un plat avec son ID
     app.get('/meal/:id', function (req, res, next) {
         dbHelper.meal.select(req.params.id).then(
             meal => {
@@ -263,10 +290,8 @@ module.exports = (passport) => {
         );
     });
 
-
-
-
-
+    //table reliant une commande et les plats contenus dedans
+    // obtenir les plats contenus dans une commande avec ID commande
     app.get('/ordermeals/:id', function (req, res, next) {
         dbHelper.ordermeals.select(Number(req.params.id)).then(
             ordermeal => {
@@ -279,6 +304,7 @@ module.exports = (passport) => {
         );
     });
 
+    // ajouter une commande 
     app.post('/ordermeals/post', function (req, res, next) {
         dbHelper.ordermeals.insert(req.body.ID_Order, req.body.ID_Plat, req.body.ID_Dessert).then(
             ordermeal => {
@@ -291,6 +317,7 @@ module.exports = (passport) => {
         );
     });
 
+    //supprimer une commande
     app.delete('/ordermeals/delete/:id', function (req, res, next) {
         dbHelper.ordermeals.delete(req.params.id).then(
             ordermeal => {
@@ -304,6 +331,7 @@ module.exports = (passport) => {
     });
 
 
+    // table reliant un menu et tous les plats contenus dedans
     app.get('/planmeals/:id', function (req, res, next) {
         dbHelper.planmeals.select(req.params.id).then(
             meal => {
@@ -315,7 +343,6 @@ module.exports = (passport) => {
             },
         );
     });
-
 
     return app;
 }
